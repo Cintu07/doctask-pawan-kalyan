@@ -93,6 +93,20 @@ def healthz() -> dict[str, str]:
     return {"status": "ok"}
 
 
+# The review interface, served from the built bundle committed in static/.
+# Mounting it here means a stranger with no node installed still gets the ui,
+# which is the whole point of committing the build output.
+_STATIC = pathlib.Path(__file__).parent / "static"
+if _STATIC.is_dir():
+    from fastapi.staticfiles import StaticFiles
+
+    app.mount("/ui", StaticFiles(directory=_STATIC, html=True), name="ui")
+
+    @app.get("/", include_in_schema=False)
+    def root() -> Response:
+        return Response(status_code=307, headers={"Location": "/ui/"})
+
+
 @app.post("/analyse")
 def analyse(request: AnalyseRequest) -> dict[str, Any]:
     """Read the pile and propose a register. Publishes nothing."""

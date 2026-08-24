@@ -6,6 +6,6 @@ __pycache__/
 *.egg-info/
 data/
 corpus/
-*.html
-!src/analyst/assets/*.html
 .env
+ui/node_modules/
+ui/dist/

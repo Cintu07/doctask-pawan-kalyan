@@ -10,7 +10,8 @@ built by pawan for the superdocs round 2 task.
 ```
 git clone <this repo> && cd doctask-pawan-kalyan
 python -m venv .venv && .venv/bin/pip install -e ".[dev]"
-analyst demo
+analyst demo          # the whole story, offline, in one second
+analyst serve         # then open http://127.0.0.1:8000/ui
 ```
 
 that is the whole setup. no docker, no database server, no api key, no paid
@@ -206,8 +207,13 @@ mcp tools: `analyse_corpus`, `decide_item`, `publish_register`, `resume_run`,
 
 ```bash
 analyst mcp     # stdio
-analyst serve   # http on :8000, openapi at /docs
+analyst serve   # http on :8000, review ui at /ui, openapi at /docs
 ```
+
+the review interface is react, and it is where the gate is easiest to see: each
+conflict shows every position with **the exact quoted sentence from each
+document**, side by side, and you pick which one governs. publish stays disabled
+in spirit and refuses in fact until nothing is left open.
 
 connect it to claude code with:
 
@@ -270,11 +276,13 @@ costs nothing, and is testable without a key. the model is asked only about
 subjects the rules could not answer. on the demo corpus the model is never
 called at all, which is why the whole run is free.
 
-**no react ui.** the brief asks for one and there is not one. the human gate is
-real and complete, over the cli, the http api and mcp, and there is a rendered
-html register. i would rather ship three working surfaces than four where one is
-a shell. this is the deliberate cut, and it is the first thing i would build
-next.
+**the react ui ships built.** `npm run build` output is committed into
+`src/analyst/static` and fastapi mounts it at `/ui`. that means a stranger who
+clones this and has no node installed still gets the review interface. the cost
+is a build artefact in the repository, which is normally a smell. i think it is
+the right call here because the alternative is a reviewer who cannot see the
+human gate without a node toolchain, and the gate is the most important thing in
+the system to be able to look at.
 
 ---
 
@@ -296,6 +304,8 @@ next.
 - **no ocr.** a scanned pdf yields no text and is reported as unreadable.
 - **precedence is explained, never applied.** by design, but it does mean a file
   with fifty amendments is fifty decisions.
+- **the ui has no auth.** it is a local reviewer tool and binds to localhost.
+  putting it on a network needs auth in front of it, which is not built.
 - **the offline extractor is weaker than a model** on unusual phrasing. it is
   there so the suite runs keyless and so a provider outage degrades the system
   instead of stopping it.
@@ -320,6 +330,8 @@ src/analyst/
   api.py         http
   mcp_server.py  mcp
   cli.py         the command line
+  static/        the built review ui, committed so node is not required
+ui/              react review interface source
 corpus/          synthetic documents, generated
 playbooks/       the rules
 tests/           60 tests, no key required
