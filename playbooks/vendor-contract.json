@@ -1,0 +1,59 @@
+{
+  "name": "Calder & Voss vendor contract playbook",
+  "description": "The commercial positions the firm will accept without escalation. Edit this file to change the policy; no code change is needed.",
+  "rules": [
+    {
+      "id": "PAY-01",
+      "stage": 1,
+      "subject": "payment_terms_days",
+      "comparator": "lte",
+      "value": 45,
+      "severity": "high",
+      "message": "Payment terms exceed the 45 day maximum the firm accepts."
+    },
+    {
+      "id": "LIA-01",
+      "stage": 1,
+      "subject": "liability_cap",
+      "comparator": "gte",
+      "value": 1000000,
+      "severity": "critical",
+      "message": "Liability cap is below the $1,000,000 floor required for data engineering suppliers."
+    },
+    {
+      "id": "REN-01",
+      "stage": 2,
+      "subject": "auto_renewal_notice_days",
+      "comparator": "lte",
+      "value": 60,
+      "severity": "medium",
+      "message": "Auto-renewal notice period is longer than 60 days, which risks an unintended renewal."
+    },
+    {
+      "id": "LAW-01",
+      "stage": 2,
+      "subject": "governing_law",
+      "comparator": "one_of",
+      "value": ["Delaware", "New York", "England and Wales"],
+      "severity": "medium",
+      "message": "Governing law is outside the approved list."
+    },
+    {
+      "id": "TRM-01",
+      "stage": 2,
+      "subject": "notice_period_days",
+      "comparator": "lte",
+      "value": 90,
+      "severity": "low",
+      "message": "Termination notice period exceeds 90 days."
+    },
+    {
+      "id": "VAL-01",
+      "stage": 3,
+      "subject": "contract_value",
+      "comparator": "present",
+      "severity": "low",
+      "message": "No total contract value is stated anywhere in the file."
+    }
+  ]
+}
