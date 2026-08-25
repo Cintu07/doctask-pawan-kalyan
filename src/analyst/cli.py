@@ -36,6 +36,7 @@ def _analyst(args) -> Analyst:
 
 
 def cmd_analyse(args) -> int:
+    print("reading the pile...", flush=True)
     analyst = _analyst(args)
     proposal = analyst.analyse(
         corpus_id=args.corpus,
@@ -231,6 +232,13 @@ def cmd_demo(args) -> int:
 
 
 def cmd_serve(args) -> int:
+    # Printed before the imports, not after: uvicorn and the graph stack take a
+    # few seconds to load and a silent terminal reads as a hang.
+    print(f"starting the analyst api on http://{args.host}:{args.port}")
+    print(f"  review interface  http://{args.host}:{args.port}/ui")
+    print(f"  api docs          http://{args.host}:{args.port}/docs")
+    print("loading, this takes a few seconds. ctrl-c to stop.\n", flush=True)
+
     import uvicorn
 
     uvicorn.run("analyst.api:app", host=args.host, port=args.port, reload=False)

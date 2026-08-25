@@ -22,9 +22,6 @@ import uuid
 from contextlib import contextmanager
 from typing import Annotated, Any, Iterator, TypedDict
 
-from langgraph.checkpoint.sqlite import SqliteSaver
-from langgraph.graph import END, StateGraph
-
 from .conflicts import carry_forward_decisions, detect_conflicts
 from .extract import extract_with_rules, missing_subjects, subjects_for, verify_claims
 from .ingest import ingest_directory
@@ -264,6 +261,13 @@ class Pipeline:
     # --------------------------------------------------------------- build
 
     def build(self):
+        # Imported here rather than at module scope: langgraph pulls in
+        # langchain_core and requests, about a second of import time, and most
+        # cli commands never compile a graph. `analyst --help` should be
+        # instant, and `analyst serve` should not sit silent long enough that
+        # someone reasonably assumes it has hung.
+        from langgraph.graph import END, StateGraph
+
         graph = StateGraph(GraphState)
         graph.add_node("ingest", self.ingest_node)
         graph.add_node("guard", self.guard_node)
@@ -291,6 +295,8 @@ class Pipeline:
     @contextmanager
     def compiled(self) -> Iterator[Any]:
         """Compile with a checkpointer so a killed run can be resumed."""
+        from langgraph.checkpoint.sqlite import SqliteSaver
+
         with SqliteSaver.from_conn_string(str(self.checkpoint_path)) as saver:
             yield self.build().compile(checkpointer=saver)
 
