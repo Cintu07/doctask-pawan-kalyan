@@ -3,7 +3,7 @@
 
 :root {
   --gutter: clamp(18px, 4.2vw, 60px);
-  --bone: #eae0d1;      /* sampled from the collage itself */
+  --bone: #ede2d2;      /* sampled from the collage itself */
   --paper: #f3ebde;
   --ink: #1a1613;
   --graphite: #221d19;
@@ -453,43 +453,54 @@ h2:first-child { margin-top: 0; }
 
 /* ------------------------------------------------------- empty and busy */
 
-/* Hero: the artwork, pasted in. No blend mode, no filter, no shadow, no glow.
-   Full bleed edge to edge at every width. The copy sits beneath it. */
-.empty { background: #000; color: var(--bone); padding: 0 0 clamp(36px, 5vw, 64px); }
-.empty figure { margin: 0; }
+/* Hero: copy on the left, the artwork on the right, as in the reference.
+   The artwork sits on the page's own paper. Its ground is #ede2d2 and so is
+   the page, so there is nothing to blend, key out, or hide. */
+.empty {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 56px);
+  padding: clamp(28px, 3.6vw, 56px) var(--gutter);
+}
+.empty figure { margin: 0; min-width: 0; }
 .empty img { display: block; width: 100%; height: auto; }
 
-.empty > div { padding: clamp(28px, 3.4vw, 44px) var(--gutter) 0; max-width: 1100px; }
+.empty > div { min-width: 0; }
+
+/* Stacked only when there is genuinely no room for two columns. */
+@media (max-width: 900px) {
+  .empty { grid-template-columns: 1fr; gap: 4px; padding-top: clamp(24px, 4vw, 36px); }
+  .empty figure { margin: 0 calc(var(--gutter) * -1) calc(clamp(28px, 3.6vw, 56px) * -1); }
+}
 .empty h3 {
   margin: 0 0 22px;
   font: 400 clamp(36px, 4.6vw, 72px)/1.02 var(--serif);
   letter-spacing: -0.03em;
   text-transform: lowercase;
-  color: #f4ece0;
+  color: var(--ink);
 }
-.empty h3 i { font-style: italic; display: block; color: var(--bone); }
+.empty h3 i { font-style: italic; display: block; color: var(--ink); }
 .empty h3 sup { font-size: 0.34em; vertical-align: super; color: var(--coral); margin-left: 2px; }
 .empty p {
   margin: 0 0 16px;
   max-width: 58ch;
   font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.7;
-  color: #b3a898;
+  color: var(--mute);
 }
 .empty p:last-of-type { margin-bottom: 26px; }
 .empty code {
   font: 13px var(--mono);
-  color: #f4ece0;
-  border-bottom: 1px solid rgba(244, 236, 224, 0.28);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
 }
 .empty .empty-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-.empty .empty-actions button { border-color: #f4ece0; color: #f4ece0; background: transparent; }
-.empty .empty-actions button:hover:not(:disabled) { background: #f4ece0; color: #000; }
 .empty .empty-actions .note {
   font: var(--label);
   letter-spacing: var(--track);
   text-transform: uppercase;
-  color: #8a8073;
+  color: var(--mute-2);
 }
 
 .working { display: inline-flex; align-items: center; gap: 12px; }
