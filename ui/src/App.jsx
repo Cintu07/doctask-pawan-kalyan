@@ -32,16 +32,10 @@ function Quote({ text }) {
   return <blockquote className="quote">{text}</blockquote>;
 }
 
-function Position({ position, chosen, onChoose, disabled }) {
+function Position({ position, chosen, onChoose, disabled, letter }) {
   return (
-    <label className={"position" + (chosen ? " is-chosen" : "")}>
-      <input
-        type="radio"
-        name={position.claim_id}
-        checked={chosen}
-        disabled={disabled}
-        onChange={onChoose}
-      />
+    <label className={"position" + (chosen ? " is-chosen" : "")} data-letter={letter}>
+      <input type="radio" checked={chosen} disabled={disabled} onChange={onChoose} readOnly />
       <div className="position-body">
         <div className="position-head">
           <b>{position.value}</b>
@@ -66,10 +60,11 @@ function Conflict({ conflict, onDecide, busy }) {
       <p className="explain">{conflict.explanation}</p>
 
       <div className="positions">
-        {conflict.positions.map((p) => (
+        {conflict.positions.map((p, i) => (
           <Position
             key={p.claim_id}
             position={p}
+            letter={String.fromCharCode(65 + i)}
             chosen={chosen === p.claim_id}
             disabled={settled || busy}
             onChoose={() => setChosen(p.claim_id)}
@@ -128,12 +123,37 @@ export default function App() {
   const [corpus, setCorpus] = useState("northwind");
   const [folder, setFolder] = useState("northwind");
   const [playbook, setPlaybook] = useState("playbooks/vendor-contract.json");
+  const [domain, setDomain] = useState("vendor-contracts");
+  const [domains, setDomains] = useState([]);
   const [proposal, setProposal] = useState(null);
   const [detail, setDetail] = useState(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState(null);
   const [published, setPublished] = useState(null);
   const [history, setHistory] = useState([]);
+
+  // The available industry packs, so switching from contracts to land titles is
+  // a dropdown rather than a redeploy.
+  useEffect(() => {
+    call("/domains")
+      .then((d) => setDomains(d.domains ?? []))
+      .catch(() => setDomains([]));
+  }, []);
+
+  const PRESETS = {
+    "vendor-contracts": { folder: "northwind", playbook: "playbooks/vendor-contract.json" },
+    "land-title": { folder: "kondapur", playbook: "playbooks/land-title-diligence.json" },
+  };
+
+  function pickDomain(name) {
+    setDomain(name);
+    const preset = PRESETS[name];
+    if (preset) {
+      setFolder(preset.folder);
+      setPlaybook(preset.playbook);
+      setCorpus(preset.folder);
+    }
+  }
 
   const refresh = useCallback(async (runId, corpusId) => {
     const [d, h] = await Promise.all([
@@ -153,6 +173,7 @@ export default function App() {
         corpus_id: corpus,
         source_dir: folder,
         playbook: playbook || null,
+        domain: domain || null,
         actor: "reviewer",
       });
       setProposal(p);
@@ -202,15 +223,11 @@ export default function App() {
   return (
     <div className="app">
       <header className="top">
-        <div>
-          <h1>the analyst that never sleeps</h1>
-          <p className="sub">
-            every row traces to a span of text in a source document. nothing publishes until you say so.
-          </p>
-        </div>
+        <h1>analyst</h1>
+        <p className="sub">the analyst that never sleeps</p>
         {detail && (
           <div className="cost">
-            <span>revision {detail.revision}</span>
+            <span>rev {detail.revision}</span>
             <span>{detail.cost.total_seconds}s</span>
             <span>{detail.cost.model_calls} model calls</span>
           </div>
@@ -218,6 +235,16 @@ export default function App() {
       </header>
 
       <section className="controls">
+        <label>
+          industry
+          <select value={domain} onChange={(e) => pickDomain(e.target.value)} disabled={busy}>
+            {(domains.length ? domains : [{ name: "vendor-contracts" }]).map((d) => (
+              <option key={d.name} value={d.name}>
+                {d.name}
+              </option>
+            ))}
+          </select>
+        </label>
         <label>
           corpus
           <input value={corpus} onChange={(e) => setCorpus(e.target.value)} disabled={busy} />
@@ -231,14 +258,79 @@ export default function App() {
           <input value={playbook} onChange={(e) => setPlaybook(e.target.value)} disabled={busy} />
         </label>
         <button className="primary" onClick={analyse} disabled={busy}>
-          {busy ? "reading the pile..." : "analyse"}
+          {busy ? (
+            <span className="working">
+              <span className="spinner" />
+              reading the pile
+            </span>
+          ) : (
+            "analyse the pile"
+          )}
         </button>
       </section>
 
       {error && <pre className="error">{error}</pre>}
 
+      {!detail && !busy && !error && (
+        <div className="empty">
+          <div>
+            <h3>
+              every row traced.
+              <i>
+                every clause explained.<sup>*</sup>
+              </i>
+            </h3>
+            <p>
+              Point it at a folder of documents. It extracts every commercial term, cites the
+              exact sentence it came from, and shows you where they disagree.
+            </p>
+            <p>
+              Shipped here: <code>northwind</code> for vendor contracts, <code>kondapur</code>{" "}
+              for Telangana land titles. Pick an industry above, then analyse.
+            </p>
+            <div className="empty-actions">
+              <button className="primary" onClick={analyse} disabled={busy}>
+                analyse the pile
+              </button>
+              <span className="note">* nothing is stated that cannot be cited</span>
+            </div>
+          </div>
+          <figure>
+            <img src="/ui/hero-collage.png" alt="" />
+          </figure>
+        </div>
+      )}
+
       {detail && (
         <>
+          {/* The one line that says what happened, before any detail. */}
+          <section className="verdict">
+            <div className={"verdict-item" + (openConflicts.length ? " is-live" : "")}>
+              <b>{openConflicts.length}</b>
+              <span>{openConflicts.length === 1 ? "conflict needs you" : "conflicts need you"}</span>
+            </div>
+            <div className={"verdict-item" + (realFindings.length ? " is-warn" : " is-clear")}>
+              <b>{realFindings.length}</b>
+              <span>{realFindings.length === 1 ? "finding" : "findings"}</span>
+            </div>
+            <div className="verdict-item">
+              <b>{detail.rows.filter((r) => r.cites.length).length}</b>
+              <span>rows with a citation</span>
+            </div>
+            <div className="verdict-item">
+              <b>{detail.documents.length}</b>
+              <span>documents read</span>
+            </div>
+            <div className="verdict-item is-quiet">
+              <b>{detail.cost.model_calls}</b>
+              <span>model calls</span>
+            </div>
+            <div className="verdict-item is-quiet">
+              <b>{detail.cost.total_seconds}s</b>
+              <span>elapsed</span>
+            </div>
+          </section>
+
           <section className="stages">
             {detail.cost.stages.map((s) => (
               <div key={s.name} className={"stage st-" + s.status}>
