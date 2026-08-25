@@ -1,0 +1,56 @@
+{
+  "name": "Land title due diligence, Telangana and Andhra Pradesh",
+  "description": "What a buyer's advocate checks before a sale. Edit this file to change the standard; no code change is needed.",
+  "rules": [
+    {
+      "id": "ENC-01",
+      "stage": 1,
+      "subject": "encumbrance_status",
+      "comparator": "one_of",
+      "value": ["nil encumbrance", "no encumbrance", "nil", "none"],
+      "severity": "critical",
+      "message": "The encumbrance certificate shows a charge on this land. A subsisting mortgage with no registered release deed means the seller cannot pass clear title."
+    },
+    {
+      "id": "CLS-01",
+      "stage": 1,
+      "subject": "land_classification",
+      "comparator": "one_of",
+      "value": ["dry", "wet", "patta", "patta land", "dry land", "wet land"],
+      "severity": "critical",
+      "message": "The land is not classified as freely transferable patta land. Assigned, inam, endowment and government land cannot be sold: transfer of assigned land is prohibited under the AP Assigned Lands (Prohibition of Transfers) Act 1977, which applies in Telangana, and a sale is void with the land liable to resumption. An allowlist is used here on purpose, so a classification nobody anticipated fails closed rather than passing silently."
+    },
+    {
+      "id": "SUR-01",
+      "stage": 1,
+      "subject": "survey_number",
+      "comparator": "present",
+      "severity": "high",
+      "message": "No survey number could be read from the file. Without it the parcel cannot be identified against the revenue record."
+    },
+    {
+      "id": "EXT-01",
+      "stage": 2,
+      "subject": "extent_acres",
+      "comparator": "present",
+      "severity": "high",
+      "message": "No extent is stated anywhere in the file."
+    },
+    {
+      "id": "HLD-01",
+      "stage": 2,
+      "subject": "owner_name",
+      "comparator": "present",
+      "severity": "high",
+      "message": "No recorded holder could be identified from the documents."
+    },
+    {
+      "id": "DAT-01",
+      "stage": 3,
+      "subject": "document_date",
+      "comparator": "present",
+      "severity": "medium",
+      "message": "No document date could be read, so the order of the title chain cannot be established."
+    }
+  ]
+}

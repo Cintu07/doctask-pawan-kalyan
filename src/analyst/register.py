@@ -18,7 +18,7 @@ import hashlib
 from dataclasses import dataclass, field
 
 from .conflicts import agreed_claim
-from .extract import SUBJECT_BY_KEY, SUBJECTS
+from .extract import active_domain
 from .models import Claim, Conflict, RegisterRow, SourceDocument
 
 
@@ -27,7 +27,7 @@ class RegisterDrift(AssertionError):
 
 
 def build_rows(
-    claims: list[Claim], conflicts: list[Conflict], subjects=SUBJECTS
+    claims: list[Claim], conflicts: list[Conflict], subjects=None
 ) -> list[RegisterRow]:
     """One row per tracked subject, in a fixed order.
 
@@ -35,6 +35,7 @@ def build_rows(
     run would produce a different document and "only what moved changed" would
     be meaningless.
     """
+    subjects = subjects if subjects is not None else active_domain().subjects
     rows: list[RegisterRow] = []
     for subject in subjects:
         claim, conflict_id = agreed_claim(subject.key, claims, conflicts)

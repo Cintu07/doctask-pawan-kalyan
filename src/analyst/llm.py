@@ -21,10 +21,17 @@ from typing import Protocol
 
 import httpx
 
-from .extract import Subject, _sentence_span, _to_int, _to_money
+from .domain import Subject, cast_money
+from .extract import _sentence_span
 from .models import Claim, Provenance, SourceDocument
 
 log = logging.getLogger(__name__)
+
+
+def _int_from(text: str) -> int | None:
+    from .domain import _WORD_NUMBERS_DEFAULT, cast_int
+
+    return cast_int(text, _WORD_NUMBERS_DEFAULT)
 
 
 @dataclass(frozen=True, slots=True)
@@ -57,18 +64,6 @@ class OfflineExtractor:
 
     name = "offline"
 
-    _HINTS: dict[str, tuple[str, ...]] = {
-        "payment_terms_days": ("payment", "invoice", "net "),
-        "notice_period_days": ("terminat", "notice"),
-        "auto_renewal_notice_days": ("renew",),
-        "liability_cap": ("liability", "liable"),
-        "contract_value": ("total", "fees", "value"),
-        "rate_day": ("rate", "per day"),
-        "invoice_total": ("due", "total"),
-        "governing_law": ("governed", "jurisdiction", "governing law"),
-        "effective_date": ("effective", "commence"),
-    }
-
     def propose(
         self, document: SourceDocument, subjects: list[Subject]
     ) -> tuple[list[Claim], Usage]:
@@ -76,7 +71,11 @@ class OfflineExtractor:
         lowered = document.text.lower()
 
         for subject in subjects:
-            hints = self._HINTS.get(subject.key, ())
+            # Hints come from the domain pack, not from this module. An
+            # extractor that knew what a liability cap was could not be pointed
+            # at land records without editing python, which is the whole thing
+            # the pack exists to avoid.
+            hints = subject.hints or (subject.label.lower(),)
             for hint in hints:
                 position = lowered.find(hint)
                 if position == -1:
@@ -110,15 +109,23 @@ class OfflineExtractor:
 
     @staticmethod
     def _value_from(subject: Subject, sentence: str):
+        """Pull a value out of a sentence, driven by the subject's unit.
+
+        Unit rather than key, so a new subject in a new pack works without
+        touching this function. Text subjects deliberately return nothing: a
+        free text answer needs judgement, and guessing one would be exactly the
+        bluffing this system refuses to do. The rules or a real model answer
+        those, or the register says "not stated".
+        """
         if subject.unit == "days":
             match = re.search(r"\b(\d{1,4})\s*(?:\(\d+\)\s*)?days?\b", sentence, re.I)
-            return _to_int(match.group(1)) if match else None
+            return _int_from(match.group(1)) if match else None
         if subject.unit == "currency":
-            match = re.search(r"[$£€]\s*([\d,]+(?:\.\d+)?)", sentence)
-            return _to_money(match.group(1)) if match else None
-        if subject.key == "governing_law":
-            match = re.search(r"laws?\s+of\s+(?:the\s+)?([A-Z][A-Za-z ]{2,40})", sentence)
-            return match.group(1).strip().rstrip(".,") if match else None
+            match = re.search(r"(?:[$£€]|Rs\.?|₹)\s*([\d,]+(?:\.\d+)?)", sentence)
+            return cast_money(match.group(1)) if match else None
+        if subject.unit == "acres":
+            match = re.search(r"\b(\d+(?:\.\d+)?)\s*(?:ac(?:re)?s?)\b", sentence, re.I)
+            return match.group(1) if match else None
         return None
 
 
@@ -234,9 +241,9 @@ class OpenAICompatibleExtractor:
 
             value = raw
             if subject.unit == "days":
-                value = _to_int(str(raw))
+                value = _int_from(str(raw))
             elif subject.unit == "currency":
-                value = _to_money(str(raw))
+                value = cast_money(str(raw))
             if value is None:
                 continue
 

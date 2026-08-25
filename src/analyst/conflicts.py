@@ -73,7 +73,11 @@ def _explain(a: Claim, b: Claim, documents: dict[str, SourceDocument]) -> tuple[
 # Subjects where documents are *expected* to differ, so a difference is not a
 # contradiction. Each document in a file has its own effective date; reporting
 # that as a dispute is noise, and noise is how a findings list stops being read.
-PER_DOCUMENT_SUBJECTS = frozenset({"effective_date", "invoice_total"})
+def _per_document_subjects() -> frozenset[str]:
+    """Subjects where documents are expected to differ, from the domain pack."""
+    from .extract import active_domain
+
+    return active_domain().per_document_subjects
 
 
 def carry_forward_decisions(
@@ -140,7 +144,7 @@ def detect_conflicts(
 
     conflicts: list[Conflict] = []
     for subject, group in sorted(by_subject.items()):
-        if subject in PER_DOCUMENT_SUBJECTS:
+        if subject in _per_document_subjects():
             continue
         seen: list[tuple[Claim, Claim]] = []
         for a, b in combinations(group, 2):

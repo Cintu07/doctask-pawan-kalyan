@@ -48,6 +48,7 @@ def analyse_corpus(
     source_dir: str,
     playbook: str | None = None,
     incremental: bool | None = None,
+    domain: str | None = None,
 ) -> dict[str, Any]:
     """Read a folder of contract documents and propose a register.
 
@@ -63,6 +64,7 @@ def analyse_corpus(
         source_dir=_source(source_dir),
         playbook=playbook,
         incremental=incremental,
+        domain=domain,
         actor="mcp",
     )
     return proposal.to_dict()

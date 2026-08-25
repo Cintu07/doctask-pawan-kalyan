@@ -1,0 +1,270 @@
+{
+  "name": "vendor-contracts",
+  "description": "Commercial terms across a master agreement, its amendments, statements of work and the invoices that bill against them.",
+  "per_document_subjects": [
+    "effective_date",
+    "invoice_total"
+  ],
+  "kinds": [
+    {
+      "kind": "amendment",
+      "weight": 3,
+      "patterns": [
+        "\\bamendment\\b",
+        "\\baddend(um|a)\\b",
+        "\\bvariation\\s+order\\b",
+        "\\bchange\\s+order\\b"
+      ]
+    },
+    {
+      "kind": "invoice",
+      "weight": 3,
+      "patterns": [
+        "\\binvoice\\b",
+        "\\bremittance\\b",
+        "\\bamount\\s+due\\b",
+        "\\binvoice\\s+number\\b"
+      ]
+    },
+    {
+      "kind": "sow",
+      "weight": 3,
+      "patterns": [
+        "\\bstatement\\s+of\\s+work\\b",
+        "\\bSOW\\b",
+        "\\bwork\\s+order\\b"
+      ]
+    },
+    {
+      "kind": "policy",
+      "weight": 2,
+      "patterns": [
+        "\\bpolicy\\b",
+        "\\bplaybook\\b",
+        "\\bstandard\\s+operating\\b"
+      ]
+    },
+    {
+      "kind": "msa",
+      "weight": 2,
+      "patterns": [
+        "\\bmaster\\s+(services?|service)\\s+agreement\\b",
+        "\\bMSA\\b",
+        "\\bthis\\s+agreement\\b",
+        "\\bservices?\\s+agreement\\b"
+      ]
+    }
+  ],
+  "subjects": [
+    {
+      "key": "payment_terms_days",
+      "label": "Payment terms",
+      "unit": "days",
+      "kinds": [
+        "msa",
+        "amendment",
+        "sow",
+        "invoice"
+      ],
+      "question": "How many days does the customer have to pay an invoice?",
+      "hints": [
+        "payment",
+        "invoice",
+        "net "
+      ]
+    },
+    {
+      "key": "liability_cap",
+      "label": "Limitation of liability",
+      "unit": "currency",
+      "kinds": [
+        "msa",
+        "amendment"
+      ],
+      "question": "What is the cap on liability, as an amount or a multiple of fees?",
+      "hints": [
+        "liability",
+        "liable"
+      ]
+    },
+    {
+      "key": "notice_period_days",
+      "label": "Termination notice",
+      "unit": "days",
+      "kinds": [
+        "msa",
+        "amendment"
+      ],
+      "question": "How many days notice is required to terminate for convenience?",
+      "hints": [
+        "terminat",
+        "notice"
+      ]
+    },
+    {
+      "key": "auto_renewal_notice_days",
+      "label": "Auto-renewal notice",
+      "unit": "days",
+      "kinds": [
+        "msa",
+        "amendment"
+      ],
+      "question": "How many days before renewal must notice of non-renewal be given?",
+      "hints": [
+        "renew"
+      ]
+    },
+    {
+      "key": "governing_law",
+      "label": "Governing law",
+      "unit": "text",
+      "kinds": [
+        "msa",
+        "amendment",
+        "sow"
+      ],
+      "question": "Which jurisdiction's law governs this agreement?",
+      "hints": [
+        "governed",
+        "jurisdiction",
+        "governing law"
+      ]
+    },
+    {
+      "key": "contract_value",
+      "label": "Contract value",
+      "unit": "currency",
+      "kinds": [
+        "msa",
+        "amendment",
+        "sow"
+      ],
+      "question": "What is the total contract value or fee?",
+      "hints": [
+        "total",
+        "fees",
+        "value"
+      ]
+    },
+    {
+      "key": "effective_date",
+      "label": "Effective date",
+      "unit": "date",
+      "kinds": [
+        "msa",
+        "amendment",
+        "sow",
+        "invoice"
+      ],
+      "question": "On what date does this agreement take effect?",
+      "hints": [
+        "effective",
+        "commence"
+      ]
+    },
+    {
+      "key": "rate_day",
+      "label": "Day rate",
+      "unit": "currency",
+      "kinds": [
+        "msa",
+        "amendment",
+        "sow",
+        "invoice"
+      ],
+      "question": "What is the quoted day rate or hourly rate?",
+      "hints": [
+        "rate",
+        "per day"
+      ]
+    },
+    {
+      "key": "invoice_total",
+      "label": "Invoice total",
+      "unit": "currency",
+      "kinds": [
+        "invoice"
+      ],
+      "question": "What is the total amount due on this invoice?",
+      "hints": [
+        "due",
+        "total"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "subject": "payment_terms_days",
+      "cast": "int",
+      "patterns": [
+        "payment\\s+terms?\\s+(?:are|is|shall\\s+be|of)?\\s*(?:net\\s+)?(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days",
+        "net\\s+(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days",
+        "within\\s+(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days\\s+of\\s+(?:the\\s+)?invoice",
+        "pay(?:able)?\\s+within\\s+(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days"
+      ]
+    },
+    {
+      "subject": "notice_period_days",
+      "cast": "int",
+      "patterns": [
+        "terminate[^.]{0,60}?(?:upon|on|with|giving)\\s+(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days[^.]{0,40}notice",
+        "(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days[^.]{0,30}written\\s+notice[^.]{0,40}terminat"
+      ]
+    },
+    {
+      "subject": "auto_renewal_notice_days",
+      "cast": "int",
+      "patterns": [
+        "(?:renew|renewal)[^.]{0,90}?(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days[^.]{0,40}notice",
+        "(?P<v>(\\d{1,4}|[a-z][a-z\\- ]{2,24}))\\s*(?:\\(\\d+\\)\\s*)?days[^.]{0,60}(?:prior\\s+to|before)[^.]{0,40}renew"
+      ]
+    },
+    {
+      "subject": "liability_cap",
+      "cast": "money",
+      "patterns": [
+        "liability[^.]{0,120}?(?:shall\\s+not\\s+exceed|capped\\s+at|limited\\s+to)[^.]{0,40}?[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)",
+        "(?:aggregate\\s+)?liability[^.]{0,80}?exceed[^.]{0,30}?[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)"
+      ]
+    },
+    {
+      "subject": "contract_value",
+      "cast": "money",
+      "patterns": [
+        "(?:total\\s+(?:contract\\s+)?(?:value|fees?)|contract\\s+value)[^.]{0,40}?[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)"
+      ]
+    },
+    {
+      "subject": "rate_day",
+      "cast": "money",
+      "patterns": [
+        "[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)\\s*(?:per|/)\\s*(?:day|diem)",
+        "day\\s+rate[^.]{0,30}?[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)"
+      ]
+    },
+    {
+      "subject": "invoice_total",
+      "cast": "money",
+      "patterns": [
+        "(?:total\\s+(?:amount\\s+)?due|amount\\s+due|invoice\\s+total|total\\s+payable)[^.\\n]{0,30}?[$£€]\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)"
+      ]
+    },
+    {
+      "subject": "effective_date",
+      "cast": "date",
+      "patterns": [
+        "effective\\s+(?:from|as\\s+of|on)\\s+(?P<v>\\d{1,2}\\s+\\w+\\s+\\d{4})",
+        "\\*\\*Effective:\\*\\*\\s*(?P<v>\\d{1,2}\\s+\\w+\\s+\\d{4})",
+        "effective\\s+date[^.\\n]{0,12}?[:\\s]\\s*(?P<v>\\d{1,2}\\s+\\w+\\s+\\d{4})"
+      ]
+    },
+    {
+      "subject": "governing_law",
+      "cast": "text",
+      "patterns": [
+        "governed\\s+by[^.]{0,60}?laws?\\s+of\\s+(?:the\\s+)?(?P<v>[A-Z][A-Za-z ]{2,40}?)(?:\\s*[,.]|\\s+and\\b)",
+        "governing\\s+law[^.]{0,20}?:\\s*(?P<v>[A-Z][A-Za-z ]{2,40})"
+      ]
+    }
+  ]
+}

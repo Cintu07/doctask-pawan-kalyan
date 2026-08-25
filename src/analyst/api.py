@@ -15,10 +15,11 @@ import os
 import pathlib
 from typing import Any
 
-from fastapi import Body, FastAPI, HTTPException
+from fastapi import Body, FastAPI, HTTPException, Response
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
+from .domain import DomainError, available_domains
 from .ingest import UnsupportedDocument
 from .playbook import PlaybookError
 from .register import RegisterDrift
@@ -46,6 +47,7 @@ class AnalyseRequest(BaseModel):
     incremental: bool | None = Field(
         None, description="Omit to decide automatically from whether this corpus is known"
     )
+    domain: str | None = Field(None, description="industry pack, e.g. land-title")
     actor: str = "api"
 
 
@@ -118,7 +120,10 @@ def analyse(request: AnalyseRequest) -> dict[str, Any]:
             playbook=request.playbook,
             incremental=request.incremental,
             actor=request.actor,
+            domain=request.domain,
         )
+    except DomainError as exc:
+        raise HTTPException(status_code=422, detail={"error": str(exc)}) from exc
     except PlaybookError as exc:
         raise HTTPException(status_code=422, detail={"error": str(exc)}) from exc
     except UnsupportedDocument as exc:
@@ -189,6 +194,23 @@ def resume(run_id: str = Body(..., embed=True)) -> dict[str, Any]:
             status_code=404,
             detail={"error": str(exc), "fix": "check the run id with GET /runs"},
         ) from exc
+
+
+@app.get("/domains")
+def domains() -> dict[str, Any]:
+    """The industry packs available. Adding one is a json file, not a deploy."""
+    from .domain import load_domain
+
+    return {
+        "domains": [
+            {
+                "name": n,
+                "description": load_domain(n).description,
+                "subjects": len(load_domain(n).subjects),
+            }
+            for n in available_domains()
+        ]
+    }
 
 
 @app.get("/runs")

@@ -42,6 +42,7 @@ def cmd_analyse(args) -> int:
         source_dir=args.folder,
         playbook=args.playbook,
         actor=args.actor,
+        domain=args.domain,
     )
     print(f"run {proposal.run_id}  revision {proposal.revision}")
     print(f"{proposal.diff.summary()}\n")
@@ -184,6 +185,7 @@ def cmd_watch(args) -> int:
                     source_dir=folder,
                     playbook=args.playbook,
                     actor="watcher",
+                    domain=getattr(args, "domain", None),
                 )
                 print(f"  {proposal.diff.summary()}")
                 for change in proposal.diff.touched:
@@ -206,6 +208,18 @@ def cmd_watch(args) -> int:
         except LeaseHeld as exc:
             print(f"  busy: {exc}")
             time.sleep(args.interval)
+
+
+def cmd_domains(args) -> int:
+    from .domain import available_domains, load_domain
+
+    for name in available_domains():
+        d = load_domain(name)
+        print(f"{name}")
+        print(f"  {d.description}")
+        print(f"  {len(d.subjects)} subjects, {len(d.rules)} rules, "
+              f"{len(d.kinds)} document kinds")
+    return 0
 
 
 def cmd_demo(args) -> int:
@@ -242,6 +256,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("corpus")
     p.add_argument("folder")
     p.add_argument("--playbook", default=None)
+    p.add_argument("--domain", default=None,
+                   help="which industry pack to use, e.g. vendor-contracts or land-title")
     p.set_defaults(func=cmd_analyse)
 
     p = sub.add_parser("review", help="see what is waiting for a decision")
@@ -275,8 +291,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("corpus")
     p.add_argument("folder")
     p.add_argument("--playbook", default=None)
+    p.add_argument("--domain", default=None)
     p.add_argument("--interval", type=float, default=5.0)
     p.set_defaults(func=cmd_watch)
+
+    p = sub.add_parser("domains", help="list the industry packs available")
+    p.set_defaults(func=cmd_domains)
 
     p = sub.add_parser("demo", help="the whole story, offline, in one go")
     p.set_defaults(func=cmd_demo)

@@ -15,7 +15,6 @@ import hashlib
 import logging
 import pathlib
 import re
-from dataclasses import dataclass
 from datetime import UTC, datetime
 
 from .models import DocumentKind, SourceDocument
@@ -29,25 +28,15 @@ class UnsupportedDocument(ValueError):
     """The file is not a format this system reads."""
 
 
-@dataclass(frozen=True, slots=True)
-class KindRule:
-    kind: DocumentKind
-    patterns: tuple[str, ...]
-    weight: int = 1
+def _kind_rules():
+    """Document kinds come from the active domain pack, not from this module.
 
+    Imported lazily to keep ingest free of a circular import: the domain loader
+    has no dependencies of its own, but extract imports ingest.
+    """
+    from .domain import active_domain_kinds
 
-# Ordered most specific first. An amendment usually also says "agreement", so it
-# has to be tested before the master agreement rule can claim it.
-KIND_RULES: tuple[KindRule, ...] = (
-    KindRule("amendment", (r"\bamendment\b", r"\baddend(um|a)\b", r"\bvariation\s+order\b",
-                           r"\bchange\s+order\b"), weight=3),
-    KindRule("invoice", (r"\binvoice\b", r"\bremittance\b", r"\bamount\s+due\b",
-                         r"\binvoice\s+number\b"), weight=3),
-    KindRule("sow", (r"\bstatement\s+of\s+work\b", r"\bSOW\b", r"\bwork\s+order\b"), weight=3),
-    KindRule("policy", (r"\bpolicy\b", r"\bplaybook\b", r"\bstandard\s+operating\b"), weight=2),
-    KindRule("msa", (r"\bmaster\s+(services?|service)\s+agreement\b", r"\bMSA\b",
-                     r"\bthis\s+agreement\b", r"\bservices?\s+agreement\b"), weight=2),
-)
+    return active_domain_kinds()
 
 
 def sha256_of(data: bytes) -> str:
@@ -111,7 +100,7 @@ def read_text(path: pathlib.Path) -> tuple[str, int]:
     raise UnsupportedDocument(f"{path.name}: unhandled format")
 
 
-def classify(text: str, filename: str = "") -> tuple[DocumentKind, str]:
+def classify(text: str, filename: str = "", kinds=None) -> tuple[DocumentKind, str]:
     """Decide what a document is, and be able to say why.
 
     Returns the kind and the evidence for it. The reason is not decoration: a
@@ -121,7 +110,7 @@ def classify(text: str, filename: str = "") -> tuple[DocumentKind, str]:
     haystack = f"{filename}\n{text[:4000]}".lower()
     scores: dict[DocumentKind, tuple[int, str]] = {}
 
-    for rule in KIND_RULES:
+    for rule in (kinds if kinds is not None else _kind_rules()):
         for pattern in rule.patterns:
             match = re.search(pattern, haystack, re.I)
             if match:

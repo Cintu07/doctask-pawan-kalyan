@@ -70,7 +70,7 @@ class Claim:
     """One assertion about the world, taken from one document."""
 
     id: str
-    subject: str  # "payment_terms_days", "liability_cap", "rate.senior_engineer"
+    subject: str  # a key from the active domain pack
     value: str | Decimal | date | None
     unit: str
     provenance: Provenance

@@ -130,6 +130,7 @@ class Analyst:
         incremental: bool | None = None,
         run_id: str | None = None,
         actor: str = "system",
+        domain: str | None = None,
     ) -> Proposal:
         """Read the pile and propose a register. Publishes nothing.
 
@@ -137,6 +138,11 @@ class Analyst:
         analysed before, only new or changed documents are read, and the
         existing register is the baseline the diff is taken against.
         """
+        if domain:
+            # Switching industry is a data change: a different pack, same pipeline.
+            from .extract import use_domain
+
+            use_domain(domain)
         rules: list[Rule] = load_playbook(playbook) if playbook else []
         previous_revision, previous_rows = self.store.load_register(corpus_id)
         if incremental is None:

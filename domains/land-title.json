@@ -1,0 +1,298 @@
+{
+  "name": "land-title",
+  "description": "Title chain over a parcel of agricultural land in Telangana or Andhra Pradesh: sale deeds, partition deeds, encumbrance certificates, pattadar passbooks and mutation records that rarely agree on extent or ownership.",
+  "per_document_subjects": [
+    "document_date",
+    "consideration",
+    "survey_number"
+  ],
+  "kinds": [
+    {
+      "kind": "sale_deed",
+      "weight": 3,
+      "patterns": [
+        "\\bsale\\s+deed\\b",
+        "\\bdeed\\s+of\\s+(absolute\\s+)?sale\\b",
+        "\\bvendor\\b.{0,40}\\bvendee\\b",
+        "\\bక్రయ\\s*పత్రం\\b"
+      ]
+    },
+    {
+      "kind": "partition_deed",
+      "weight": 3,
+      "patterns": [
+        "\\bpartition\\s+deed\\b",
+        "\\bdeed\\s+of\\s+partition\\b",
+        "\\bfamily\\s+settlement\\b"
+      ]
+    },
+    {
+      "kind": "encumbrance",
+      "weight": 3,
+      "patterns": [
+        "\\bencumbrance\\s+certificate\\b",
+        "\\bEC\\s+no\\b",
+        "\\bnil\\s+encumbrance\\b"
+      ]
+    },
+    {
+      "kind": "pattadar_passbook",
+      "weight": 3,
+      "patterns": [
+        "\\bpattadar\\s+pass\\s*book\\b",
+        "\\bpattadar\\b",
+        "\\btitle\\s+deed\\s+cum\\b",
+        "\\bpattadar\\s+passbook\\b"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "weight": 3,
+      "patterns": [
+        "\\bmutation\\b",
+        "\\bdharani\\b",
+        "\\bwebland\\b",
+        "\\brecord\\s+of\\s+rights\\b",
+        "\\bpahani\\b",
+        "\\badangal\\b"
+      ]
+    },
+    {
+      "kind": "survey_record",
+      "weight": 2,
+      "patterns": [
+        "\\bsurvey\\s+(?:and\\s+)?settlement\\b",
+        "\\bFMB\\b",
+        "\\bfield\\s+measurement\\s+book\\b",
+        "\\btippon\\b"
+      ]
+    }
+  ],
+  "subjects": [
+    {
+      "key": "survey_number",
+      "label": "Survey number",
+      "unit": "text",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "encumbrance",
+        "pattadar_passbook",
+        "mutation",
+        "survey_record"
+      ],
+      "question": "Which survey number does this document concern?",
+      "hints": [
+        "survey",
+        "s. no"
+      ]
+    },
+    {
+      "key": "extent_acres",
+      "label": "Extent (acres)",
+      "unit": "acres",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "pattadar_passbook",
+        "mutation",
+        "survey_record"
+      ],
+      "question": "What extent of land, in acres, does this document record?",
+      "hints": [
+        "extent",
+        "admeasuring",
+        "acres"
+      ]
+    },
+    {
+      "key": "owner_name",
+      "label": "Recorded holder",
+      "unit": "text",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "pattadar_passbook",
+        "mutation"
+      ],
+      "question": "Who is recorded as holding the land?",
+      "hints": [
+        "pattadar",
+        "holder",
+        "in favour of"
+      ]
+    },
+    {
+      "key": "village",
+      "label": "Village",
+      "unit": "text",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "pattadar_passbook",
+        "mutation",
+        "survey_record"
+      ],
+      "question": "Which village is the land in?",
+      "hints": [
+        "village"
+      ]
+    },
+    {
+      "key": "mandal",
+      "label": "Mandal",
+      "unit": "text",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "pattadar_passbook",
+        "mutation"
+      ],
+      "question": "Which mandal is the land in?",
+      "hints": [
+        "mandal"
+      ]
+    },
+    {
+      "key": "land_classification",
+      "label": "Land classification",
+      "unit": "text",
+      "kinds": [
+        "pattadar_passbook",
+        "mutation",
+        "survey_record"
+      ],
+      "question": "Is the land classified as wet, dry, patta, assigned or government?",
+      "hints": [
+        "classification",
+        "nature of land"
+      ]
+    },
+    {
+      "key": "document_date",
+      "label": "Document date",
+      "unit": "date",
+      "kinds": [
+        "sale_deed",
+        "partition_deed",
+        "encumbrance",
+        "mutation"
+      ],
+      "question": "What is the date of this document?",
+      "hints": [
+        "executed",
+        "registered",
+        "dated"
+      ]
+    },
+    {
+      "key": "consideration",
+      "label": "Consideration paid",
+      "unit": "currency",
+      "kinds": [
+        "sale_deed"
+      ],
+      "question": "What consideration was paid?",
+      "hints": [
+        "consideration",
+        "sale consideration"
+      ]
+    },
+    {
+      "key": "encumbrance_status",
+      "label": "Encumbrance",
+      "unit": "text",
+      "kinds": [
+        "encumbrance"
+      ],
+      "question": "Does the encumbrance certificate show any charge on the land?",
+      "hints": [
+        "encumbrance",
+        "mortgage"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "subject": "survey_number",
+      "cast": "text",
+      "patterns": [
+        "survey\\s+(?:no\\.?|number)\\s*[:.]?\\s*(?P<v>\\d{1,4}(?:\\s*[/-]\\s*[A-Z0-9]{1,4})*)",
+        "\\bS\\.?\\s*No\\.?\\s*[:.]?\\s*(?P<v>\\d{1,4}(?:\\s*[/-]\\s*[A-Z0-9]{1,4})*)",
+        "సర్వే\\s*నెం\\.?\\s*[:.]?\\s*(?P<v>\\d{1,4}(?:\\s*[/-]\\s*[A-Z0-9]{1,4})*)"
+      ]
+    },
+    {
+      "subject": "extent_acres",
+      "cast": "text",
+      "patterns": [
+        "(?:extent|admeasuring|measuring)[^.\\n]{0,40}?(?P<v>\\d+(?:\\.\\d+)?)\\s*(?:ac|acres?)\\b",
+        "(?P<v>\\d+(?:\\.\\d+)?)\\s*(?:ac(?:re)?s?)\\b[^.\\n]{0,20}?(?:of\\s+)?(?:dry|wet|land)",
+        "\\bAc\\.?\\s*(?P<v>\\d+(?:\\.\\d+)?)"
+      ]
+    },
+    {
+      "subject": "owner_name",
+      "cast": "text",
+      "patterns": [
+        "(?:pattadar|holder|owner)\\s*(?:name)?\\s*[:.]\\s*(?P<v>[A-Z][A-Za-z. ]{3,40}?)(?:\\s*[,\\n]|$)",
+        "in\\s+favour\\s+of\\s+(?:Sri|Smt|Shri)\\.?\\s*(?P<v>[A-Z][A-Za-z. ]{3,40}?)(?:\\s*[,\\n]|$)",
+        "(?:Vendee|Purchaser)\\s*[:.]\\s*(?:Sri|Smt|Shri)?\\.?\\s*(?P<v>[A-Z][A-Za-z. ]{3,40}?)(?:\\s*[,\\n]|$)"
+      ]
+    },
+    {
+      "subject": "village",
+      "cast": "text",
+      "patterns": [
+        "(?:situated\\s+at|at)\\s+(?P<v>[A-Z][A-Za-z]{2,24})\\s+village\\b",
+        "^\\s*village\\s*[:.]\\s*(?P<v>[A-Z][A-Za-z ]{2,24}?)\\s*$",
+        "\\bvillage\\s*[:.]\\s*(?P<v>[A-Z][A-Za-z]{2,24})\\b",
+        "గ్రామం\\s*[:.]?\\s*(?P<v>[^\\s,\\n]{2,28})"
+      ]
+    },
+    {
+      "subject": "mandal",
+      "cast": "text",
+      "patterns": [
+        "(?:situated\\s+at|at)[^.\\n]{0,40}?,\\s*(?P<v>[A-Z][A-Za-z]{2,24})\\s+mandal\\b",
+        "^\\s*mandal\\s*[:.]\\s*(?P<v>[A-Z][A-Za-z ]{2,24}?)\\s*$",
+        "\\bmandal\\s*[:.]\\s*(?P<v>[A-Z][A-Za-z]{2,24})\\b",
+        "మండలం\\s*[:.]?\\s*(?P<v>[^\\s,\\n]{2,28})"
+      ]
+    },
+    {
+      "subject": "land_classification",
+      "cast": "text",
+      "patterns": [
+        "(?:classification|nature\\s+of\\s+land)\\s*[:.]?\\s*(?P<v>wet|dry|patta|assigned|government|inam|endowment)",
+        "\\b(?P<v>assigned\\s+land|patta\\s+land|government\\s+land|inam\\s+land)\\b"
+      ]
+    },
+    {
+      "subject": "document_date",
+      "cast": "date",
+      "patterns": [
+        "(?:executed|registered|dated)\\s+(?:on\\s+)?(?P<v>\\d{1,2}[./-]\\d{1,2}[./-]\\d{4})",
+        "(?:date|dated)\\s*[:.]\\s*(?P<v>\\d{1,2}\\s+\\w+\\s+\\d{4})",
+        "(?:date|dated)\\s*[:.]\\s*(?P<v>\\d{1,2}[./-]\\d{1,2}[./-]\\d{4})"
+      ]
+    },
+    {
+      "subject": "consideration",
+      "cast": "money",
+      "patterns": [
+        "(?:consideration|sale\\s+consideration|sum\\s+of)[^.\\n]{0,40}?(?:Rs\\.?|₹|INR)\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)",
+        "(?:Rs\\.?|₹)\\s*(?P<v>[\\d,]+(?:\\.\\d+)?)[^.\\n]{0,30}?(?:paid|consideration)"
+      ]
+    },
+    {
+      "subject": "encumbrance_status",
+      "cast": "text",
+      "patterns": [
+        "\\b(?P<v>nil\\s+encumbrance|no\\s+encumbrance)\\b",
+        "encumbrance[^.\\n]{0,30}?[:.]\\s*(?P<v>nil|none|mortgage|lien|attachment|charge)",
+        "\\b(?P<v>mortgage|simple\\s+mortgage|equitable\\s+mortgage)\\b[^.\\n]{0,30}?(?:subsist|registered|created)"
+      ]
+    }
+  ]
+}
