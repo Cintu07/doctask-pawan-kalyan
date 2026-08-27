@@ -209,3 +209,65 @@ class TestSwitchingBackIsClean:
         subjects = {r.subject for r in proposal.state.rows}
         assert "payment_terms_days" in subjects
         assert "survey_number" not in subjects
+
+
+class TestBinaryFilesAreRefused:
+    """A file whose extension lies about its contents.
+
+    Found by scripts/abuse.py: a binary file named .txt was decoded with
+    errors="replace" and became a document made of replacement characters. It
+    classified as unknown and contributed nothing, so the register stayed
+    correct, but the corpus silently contained something nobody could read.
+    Going quiet is not the same as being right.
+    """
+
+    def test_binary_data_wearing_a_text_extension_is_rejected(self, tmp_path):
+        from analyst.ingest import UnsupportedDocument, read_text
+
+        f = tmp_path / "actually-a-jpeg.txt"
+        f.write_bytes(bytes(range(256)) * 40)
+        with pytest.raises(UnsupportedDocument, match="binary data"):
+            read_text(f)
+
+    def test_the_error_names_the_file_and_the_reason(self, tmp_path):
+        from analyst.ingest import UnsupportedDocument, read_text
+
+        f = tmp_path / "bad.txt"
+        f.write_bytes(bytes(range(256)) * 40)
+        with pytest.raises(UnsupportedDocument) as exc:
+            read_text(f)
+        assert "bad.txt" in str(exc.value)
+        assert "do not agree" in str(exc.value)
+
+    def test_the_rest_of_the_pile_still_reads(self, tmp_path):
+        folder = tmp_path / "mixed"
+        folder.mkdir()
+        (folder / "junk.txt").write_bytes(bytes(range(256)) * 40)
+        (folder / "real.txt").write_text(
+            "Master Services Agreement. Payment terms are net 30 days.", encoding="utf-8"
+        )
+        documents, problems = ingest_directory(folder)
+        assert [d.name for d in documents] == ["real.txt"]
+        assert problems and "junk.txt" in problems[0]
+
+    def test_ordinary_text_with_accents_is_not_mistaken_for_binary(self, tmp_path):
+        """The check must not refuse real documents to catch fake ones."""
+        from analyst.ingest import read_text
+
+        f = tmp_path / "accents.txt"
+        f.write_text(
+            "Agreement between Sociéte Générale and Müller GmbH. "
+            "Governed by the laws of Zürich. Payment terms are net 30 days. "
+            "Signed in São Paulo. " * 6,
+            encoding="utf-8",
+        )
+        text, _ = read_text(f)
+        assert "Générale" in text
+
+    def test_a_telugu_document_is_not_mistaken_for_binary(self, tmp_path):
+        from analyst.ingest import read_text
+
+        f = tmp_path / "telugu.txt"
+        f.write_text("సర్వే నెం: 142/A గ్రామం: కొండాపూర్ మండలం: షామీర్‌పేట " * 12, encoding="utf-8")
+        text, _ = read_text(f)
+        assert "సర్వే" in text

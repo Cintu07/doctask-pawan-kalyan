@@ -11,6 +11,7 @@ built by pawan for the superdocs round 2 task.
 git clone <this repo> && cd doctask-pawan-kalyan
 python -m venv .venv && .venv/bin/pip install -e ".[dev]"
 analyst demo          # the whole story, offline, in one second
+python scripts/abuse.py   # nine ways to break it, on purpose
 analyst serve         # then open http://127.0.0.1:8000/ui
 ```
 
@@ -295,7 +296,7 @@ analyst watch northwind corpus/northwind              # keep it current
 tests, which need no key and spend nothing:
 
 ```bash
-pytest        # 75 tests
+pytest        # 80 tests
 ```
 
 the three the brief names by name live in `tests/test_resilience.py`: a run
@@ -361,6 +362,10 @@ the system to be able to look at.
   looks wrong, which is the weakest thing in the land pack.
 - **the land patterns are tuned to english documents** with telugu script
   fallbacks. a wholly telugu deed extracts little and says "not stated".
+- **a binary file with a text extension is now refused** rather than decoded
+  into replacement characters. `scripts/abuse.py` found that one: it was never
+  dangerous, it classified as unknown and contributed nothing, but a corpus
+  quietly holding a document nobody can read is worth saying out loud.
 - **the ui has no auth.** it is a local reviewer tool and binds to localhost.
   putting it on a network needs auth in front of it, which is not built.
 - **the offline extractor is weaker than a model** on unusual phrasing. it is
@@ -393,7 +398,7 @@ ui/              react review interface source
 domains/         one json file per industry: kinds, subjects, patterns
 corpus/          synthetic documents, generated
 playbooks/       the rules
-tests/           75 tests, no key required
+tests/           80 tests, no key required
 ```
 
 ---

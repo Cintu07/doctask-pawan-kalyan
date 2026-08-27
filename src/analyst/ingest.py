@@ -48,6 +48,34 @@ def document_id(name: str, digest: str) -> str:
     return hashlib.sha256(f"{name}:{digest}".encode()).hexdigest()[:16]
 
 
+def _reject_if_binary(path: pathlib.Path, text: str, threshold: float = 0.12) -> None:
+    """Refuse a file that is clearly not prose, whatever its extension says.
+
+    ``errors="replace"`` will happily turn a jpeg into a string of replacement
+    characters and control bytes. Nothing downstream crashes on it: it fails to
+    classify, contributes no claims, and the register stays correct. But going
+    quiet is not the same as being right, and a corpus silently containing a
+    document nobody can read is worth saying out loud.
+
+    Measured on the leading bytes rather than the whole file, so a large binary
+    is rejected without decoding all of it.
+    """
+    sample = text[:4000]
+    if not sample:
+        return
+    unreadable = sum(
+        1 for ch in sample
+        if ch == "�" or (ord(ch) < 32 and ch not in "\t\n\r")
+    )
+    ratio = unreadable / len(sample)
+    if ratio > threshold:
+        raise UnsupportedDocument(
+            f"{path.name}: looks like binary data, not text "
+            f"({ratio:.0%} of the first {len(sample)} characters are unreadable). "
+            f"The extension says {path.suffix} but the contents do not agree."
+        )
+
+
 def read_text(path: pathlib.Path) -> tuple[str, int]:
     """Extract plain text and a page count.
 
@@ -64,10 +92,13 @@ def read_text(path: pathlib.Path) -> tuple[str, int]:
         )
 
     if suffix in (".txt", ".md"):
-        return path.read_text(encoding="utf-8", errors="replace"), 1
+        text = path.read_text(encoding="utf-8", errors="replace")
+        _reject_if_binary(path, text)
+        return text, 1
 
     if suffix in (".html", ".htm"):
         raw = path.read_text(encoding="utf-8", errors="replace")
+        _reject_if_binary(path, raw)
         text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", raw, flags=re.S | re.I)
         text = re.sub(r"<[^>]+>", " ", text)
         return re.sub(r"[ \t]{2,}", " ", text), 1
