@@ -1,11 +1,11 @@
 {
   "summary": {
     "method": "generated corpora with known planted contradictions; see the module docstring for the full method",
-    "corpora": 200,
+    "corpora": 60,
     "seed": 20260826,
     "conflict_recall": {
-      "planted": 402,
-      "found": 402,
+      "planted": 113,
+      "found": 113,
       "rate": 1.0,
       "per_corpus": {
         "p50": 1.0,
@@ -20,16 +20,16 @@
       "corpora_with_any": 0
     },
     "citation_validity": {
-      "rows_stating_a_value": 1800,
-      "rows_with_a_verifying_citation": 1800,
+      "rows_stating_a_value": 540,
+      "rows_with_a_verifying_citation": 540,
       "rate": 1.0
     },
     "seconds_per_corpus": {
-      "p50": 0.0696,
-      "p95": 0.0782,
-      "worst": 0.8709,
-      "mean": 0.0727,
-      "stdev": 0.0572
+      "p50": 0.059,
+      "p95": 0.0742,
+      "worst": 0.862,
+      "mean": 0.0731,
+      "stdev": 0.1037
     },
     "model_calls_total": 0
   },
@@ -55,7 +55,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.8709,
+      "seconds": 0.862,
       "model_calls": 0
     },
     {
@@ -73,7 +73,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0555,
+      "seconds": 0.059,
       "model_calls": 0
     },
     {
@@ -94,7 +94,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0531,
+      "seconds": 0.0589,
       "model_calls": 0
     },
     {
@@ -115,7 +115,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0594,
+      "seconds": 0.0639,
       "model_calls": 0
     },
     {
@@ -136,7 +136,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0717,
+      "seconds": 0.0742,
       "model_calls": 0
     },
     {
@@ -163,7 +163,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.056,
+      "seconds": 0.0624,
       "model_calls": 0
     },
     {
@@ -184,7 +184,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.056,
+      "seconds": 0.0652,
       "model_calls": 0
     },
     {
@@ -208,7 +208,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0559,
+      "seconds": 0.0628,
       "model_calls": 0
     },
     {
@@ -232,7 +232,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0538,
+      "seconds": 0.0656,
       "model_calls": 0
     },
     {
@@ -244,7 +244,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0528,
+      "seconds": 0.0531,
       "model_calls": 0
     },
     {
@@ -268,7 +268,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0561,
+      "seconds": 0.0559,
       "model_calls": 0
     },
     {
@@ -280,7 +280,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0624,
+      "seconds": 0.0523,
       "model_calls": 0
     },
     {
@@ -292,7 +292,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0645,
+      "seconds": 0.055,
       "model_calls": 0
     },
     {
@@ -313,7 +313,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.057,
+      "seconds": 0.0616,
       "model_calls": 0
     },
     {
@@ -340,7 +340,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0626,
+      "seconds": 0.059,
       "model_calls": 0
     },
     {
@@ -352,7 +352,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0547,
+      "seconds": 0.0519,
       "model_calls": 0
     },
     {
@@ -379,7 +379,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0551,
+      "seconds": 0.0573,
       "model_calls": 0
     },
     {
@@ -400,7 +400,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0587,
+      "seconds": 0.0555,
       "model_calls": 0
     },
     {
@@ -421,7 +421,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0616,
+      "seconds": 0.0629,
       "model_calls": 0
     },
     {
@@ -442,7 +442,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0555,
+      "seconds": 0.061,
       "model_calls": 0
     },
     {
@@ -463,7 +463,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0599,
+      "seconds": 0.06,
       "model_calls": 0
     },
     {
@@ -475,7 +475,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0567,
+      "seconds": 0.0648,
       "model_calls": 0
     },
     {
@@ -499,7 +499,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0558,
+      "seconds": 0.056,
       "model_calls": 0
     },
     {
@@ -511,7 +511,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0569,
+      "seconds": 0.0556,
       "model_calls": 0
     },
     {
@@ -535,7 +535,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0575,
+      "seconds": 0.0682,
       "model_calls": 0
     },
     {
@@ -562,7 +562,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0563,
+      "seconds": 0.0566,
       "model_calls": 0
     },
     {
@@ -574,7 +574,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.056,
+      "seconds": 0.0558,
       "model_calls": 0
     },
     {
@@ -595,7 +595,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0556,
+      "seconds": 0.0623,
       "model_calls": 0
     },
     {
@@ -616,7 +616,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0629,
+      "seconds": 0.0655,
       "model_calls": 0
     },
     {
@@ -637,7 +637,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0592,
+      "seconds": 0.0609,
       "model_calls": 0
     },
     {
@@ -661,7 +661,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.063,
+      "seconds": 0.0617,
       "model_calls": 0
     },
     {
@@ -673,7 +673,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0602,
+      "seconds": 0.0614,
       "model_calls": 0
     },
     {
@@ -691,7 +691,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0648,
+      "seconds": 0.0664,
       "model_calls": 0
     },
     {
@@ -718,7 +718,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0558,
+      "seconds": 0.0612,
       "model_calls": 0
     },
     {
@@ -730,7 +730,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0583,
+      "seconds": 0.0549,
       "model_calls": 0
     },
     {
@@ -757,7 +757,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0664,
+      "seconds": 0.0611,
       "model_calls": 0
     },
     {
@@ -769,7 +769,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0526,
+      "seconds": 0.0601,
       "model_calls": 0
     },
     {
@@ -793,7 +793,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0551,
+      "seconds": 0.0594,
       "model_calls": 0
     },
     {
@@ -805,7 +805,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0517,
+      "seconds": 0.0563,
       "model_calls": 0
     },
     {
@@ -826,7 +826,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0522,
+      "seconds": 0.0559,
       "model_calls": 0
     },
     {
@@ -844,7 +844,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0666,
+      "seconds": 0.0585,
       "model_calls": 0
     },
     {
@@ -862,7 +862,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0741,
+      "seconds": 0.0776,
       "model_calls": 0
     },
     {
@@ -874,7 +874,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0716,
+      "seconds": 0.0675,
       "model_calls": 0
     },
     {
@@ -892,7 +892,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0738,
+      "seconds": 0.0559,
       "model_calls": 0
     },
     {
@@ -913,7 +913,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0696,
+      "seconds": 0.0571,
       "model_calls": 0
     },
     {
@@ -940,7 +940,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0712,
+      "seconds": 0.0593,
       "model_calls": 0
     },
     {
@@ -964,7 +964,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0737,
+      "seconds": 0.0633,
       "model_calls": 0
     },
     {
@@ -976,7 +976,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0759,
+      "seconds": 0.0587,
       "model_calls": 0
     },
     {
@@ -997,7 +997,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.082,
+      "seconds": 0.0556,
       "model_calls": 0
     },
     {
@@ -1024,7 +1024,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0716,
+      "seconds": 0.0566,
       "model_calls": 0
     },
     {
@@ -1051,7 +1051,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0708,
+      "seconds": 0.0568,
       "model_calls": 0
     },
     {
@@ -1063,7 +1063,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0716,
+      "seconds": 0.0567,
       "model_calls": 0
     },
     {
@@ -1075,7 +1075,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0736,
+      "seconds": 0.0603,
       "model_calls": 0
     },
     {
@@ -1099,7 +1099,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0707,
+      "seconds": 0.054,
       "model_calls": 0
     },
     {
@@ -1126,7 +1126,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0725,
+      "seconds": 0.0601,
       "model_calls": 0
     },
     {
@@ -1138,7 +1138,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.067,
+      "seconds": 0.0582,
       "model_calls": 0
     },
     {
@@ -1162,7 +1162,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0694,
+      "seconds": 0.0561,
       "model_calls": 0
     },
     {
@@ -1180,7 +1180,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0674,
+      "seconds": 0.0562,
       "model_calls": 0
     },
     {
@@ -1201,7 +1201,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0692,
+      "seconds": 0.0543,
       "model_calls": 0
     },
     {
@@ -1222,2911 +1222,7 @@
       "false_positives": [],
       "rows_stated": 9,
       "rows_cited": 9,
-      "seconds": 0.0704,
-      "model_calls": 0
-    },
-    {
-      "corpus": 60,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0706,
-      "model_calls": 0
-    },
-    {
-      "corpus": 61,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0743,
-      "model_calls": 0
-    },
-    {
-      "corpus": 62,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0684,
-      "model_calls": 0
-    },
-    {
-      "corpus": 63,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0712,
-      "model_calls": 0
-    },
-    {
-      "corpus": 64,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0749,
-      "model_calls": 0
-    },
-    {
-      "corpus": 65,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0674,
-      "model_calls": 0
-    },
-    {
-      "corpus": 66,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.068,
-      "model_calls": 0
-    },
-    {
-      "corpus": 67,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0687,
-      "model_calls": 0
-    },
-    {
-      "corpus": 68,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 69,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0791,
-      "model_calls": 0
-    },
-    {
-      "corpus": 70,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0691,
-      "model_calls": 0
-    },
-    {
-      "corpus": 71,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0739,
-      "model_calls": 0
-    },
-    {
-      "corpus": 72,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0749,
-      "model_calls": 0
-    },
-    {
-      "corpus": 73,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0712,
-      "model_calls": 0
-    },
-    {
-      "corpus": 74,
-      "planted": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0711,
-      "model_calls": 0
-    },
-    {
-      "corpus": 75,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0693,
-      "model_calls": 0
-    },
-    {
-      "corpus": 76,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0672,
-      "model_calls": 0
-    },
-    {
-      "corpus": 77,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0692,
-      "model_calls": 0
-    },
-    {
-      "corpus": 78,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0675,
-      "model_calls": 0
-    },
-    {
-      "corpus": 79,
-      "planted": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0696,
-      "model_calls": 0
-    },
-    {
-      "corpus": 80,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.069,
-      "model_calls": 0
-    },
-    {
-      "corpus": 81,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0694,
-      "model_calls": 0
-    },
-    {
-      "corpus": 82,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0713,
-      "model_calls": 0
-    },
-    {
-      "corpus": 83,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0684,
-      "model_calls": 0
-    },
-    {
-      "corpus": 84,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0702,
-      "model_calls": 0
-    },
-    {
-      "corpus": 85,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.07,
-      "model_calls": 0
-    },
-    {
-      "corpus": 86,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0769,
-      "model_calls": 0
-    },
-    {
-      "corpus": 87,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0689,
-      "model_calls": 0
-    },
-    {
-      "corpus": 88,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0747,
-      "model_calls": 0
-    },
-    {
-      "corpus": 89,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0773,
-      "model_calls": 0
-    },
-    {
-      "corpus": 90,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0748,
-      "model_calls": 0
-    },
-    {
-      "corpus": 91,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 92,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0702,
-      "model_calls": 0
-    },
-    {
-      "corpus": 93,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0701,
-      "model_calls": 0
-    },
-    {
-      "corpus": 94,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0718,
-      "model_calls": 0
-    },
-    {
-      "corpus": 95,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.072,
-      "model_calls": 0
-    },
-    {
-      "corpus": 96,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0712,
-      "model_calls": 0
-    },
-    {
-      "corpus": 97,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0782,
-      "model_calls": 0
-    },
-    {
-      "corpus": 98,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.068,
-      "model_calls": 0
-    },
-    {
-      "corpus": 99,
-      "planted": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 100,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0755,
-      "model_calls": 0
-    },
-    {
-      "corpus": 101,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 102,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0691,
-      "model_calls": 0
-    },
-    {
-      "corpus": 103,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.067,
-      "model_calls": 0
-    },
-    {
-      "corpus": 104,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0683,
-      "model_calls": 0
-    },
-    {
-      "corpus": 105,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0739,
-      "model_calls": 0
-    },
-    {
-      "corpus": 106,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0672,
-      "model_calls": 0
-    },
-    {
-      "corpus": 107,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0715,
-      "model_calls": 0
-    },
-    {
-      "corpus": 108,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0699,
-      "model_calls": 0
-    },
-    {
-      "corpus": 109,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0684,
-      "model_calls": 0
-    },
-    {
-      "corpus": 110,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0695,
-      "model_calls": 0
-    },
-    {
-      "corpus": 111,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0673,
-      "model_calls": 0
-    },
-    {
-      "corpus": 112,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0681,
-      "model_calls": 0
-    },
-    {
-      "corpus": 113,
-      "planted": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.071,
-      "model_calls": 0
-    },
-    {
-      "corpus": 114,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0658,
-      "model_calls": 0
-    },
-    {
-      "corpus": 115,
-      "planted": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0734,
-      "model_calls": 0
-    },
-    {
-      "corpus": 116,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0725,
-      "model_calls": 0
-    },
-    {
-      "corpus": 117,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0718,
-      "model_calls": 0
-    },
-    {
-      "corpus": 118,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0709,
-      "model_calls": 0
-    },
-    {
-      "corpus": 119,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0718,
-      "model_calls": 0
-    },
-    {
-      "corpus": 120,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0683,
-      "model_calls": 0
-    },
-    {
-      "corpus": 121,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0693,
-      "model_calls": 0
-    },
-    {
-      "corpus": 122,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0679,
-      "model_calls": 0
-    },
-    {
-      "corpus": 123,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0688,
-      "model_calls": 0
-    },
-    {
-      "corpus": 124,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0683,
-      "model_calls": 0
-    },
-    {
-      "corpus": 125,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.069,
-      "model_calls": 0
-    },
-    {
-      "corpus": 126,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0908,
-      "model_calls": 0
-    },
-    {
-      "corpus": 127,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0762,
-      "model_calls": 0
-    },
-    {
-      "corpus": 128,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.074,
-      "model_calls": 0
-    },
-    {
-      "corpus": 129,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0717,
-      "model_calls": 0
-    },
-    {
-      "corpus": 130,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0813,
-      "model_calls": 0
-    },
-    {
-      "corpus": 131,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0724,
-      "model_calls": 0
-    },
-    {
-      "corpus": 132,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0679,
-      "model_calls": 0
-    },
-    {
-      "corpus": 133,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0693,
-      "model_calls": 0
-    },
-    {
-      "corpus": 134,
-      "planted": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0733,
-      "model_calls": 0
-    },
-    {
-      "corpus": 135,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0743,
-      "model_calls": 0
-    },
-    {
-      "corpus": 136,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0687,
-      "model_calls": 0
-    },
-    {
-      "corpus": 137,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0689,
-      "model_calls": 0
-    },
-    {
-      "corpus": 138,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0721,
-      "model_calls": 0
-    },
-    {
-      "corpus": 139,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0675,
-      "model_calls": 0
-    },
-    {
-      "corpus": 140,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0713,
-      "model_calls": 0
-    },
-    {
-      "corpus": 141,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0694,
-      "model_calls": 0
-    },
-    {
-      "corpus": 142,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0682,
-      "model_calls": 0
-    },
-    {
-      "corpus": 143,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0865,
-      "model_calls": 0
-    },
-    {
-      "corpus": 144,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0682,
-      "model_calls": 0
-    },
-    {
-      "corpus": 145,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0713,
-      "model_calls": 0
-    },
-    {
-      "corpus": 146,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0716,
-      "model_calls": 0
-    },
-    {
-      "corpus": 147,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0686,
-      "model_calls": 0
-    },
-    {
-      "corpus": 148,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0694,
-      "model_calls": 0
-    },
-    {
-      "corpus": 149,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0712,
-      "model_calls": 0
-    },
-    {
-      "corpus": 150,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0729,
-      "model_calls": 0
-    },
-    {
-      "corpus": 151,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0726,
-      "model_calls": 0
-    },
-    {
-      "corpus": 152,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.1196,
-      "model_calls": 0
-    },
-    {
-      "corpus": 153,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0728,
-      "model_calls": 0
-    },
-    {
-      "corpus": 154,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0693,
-      "model_calls": 0
-    },
-    {
-      "corpus": 155,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0698,
-      "model_calls": 0
-    },
-    {
-      "corpus": 156,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0687,
-      "model_calls": 0
-    },
-    {
-      "corpus": 157,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0736,
-      "model_calls": 0
-    },
-    {
-      "corpus": 158,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0713,
-      "model_calls": 0
-    },
-    {
-      "corpus": 159,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0722,
-      "model_calls": 0
-    },
-    {
-      "corpus": 160,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0788,
-      "model_calls": 0
-    },
-    {
-      "corpus": 161,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0711,
-      "model_calls": 0
-    },
-    {
-      "corpus": 162,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.071,
-      "model_calls": 0
-    },
-    {
-      "corpus": 163,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0706,
-      "model_calls": 0
-    },
-    {
-      "corpus": 164,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 165,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0785,
-      "model_calls": 0
-    },
-    {
-      "corpus": 166,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0708,
-      "model_calls": 0
-    },
-    {
-      "corpus": 167,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0675,
-      "model_calls": 0
-    },
-    {
-      "corpus": 168,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0719,
-      "model_calls": 0
-    },
-    {
-      "corpus": 169,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0674,
-      "model_calls": 0
-    },
-    {
-      "corpus": 170,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0714,
-      "model_calls": 0
-    },
-    {
-      "corpus": 171,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.068,
-      "model_calls": 0
-    },
-    {
-      "corpus": 172,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0746,
-      "model_calls": 0
-    },
-    {
-      "corpus": 173,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0687,
-      "model_calls": 0
-    },
-    {
-      "corpus": 174,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0697,
-      "model_calls": 0
-    },
-    {
-      "corpus": 175,
-      "planted": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.071,
-      "model_calls": 0
-    },
-    {
-      "corpus": 176,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0743,
-      "model_calls": 0
-    },
-    {
-      "corpus": 177,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.068,
-      "model_calls": 0
-    },
-    {
-      "corpus": 178,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0752,
-      "model_calls": 0
-    },
-    {
-      "corpus": 179,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0705,
-      "model_calls": 0
-    },
-    {
-      "corpus": 180,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0683,
-      "model_calls": 0
-    },
-    {
-      "corpus": 181,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0699,
-      "model_calls": 0
-    },
-    {
-      "corpus": 182,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0667,
-      "model_calls": 0
-    },
-    {
-      "corpus": 183,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0677,
-      "model_calls": 0
-    },
-    {
-      "corpus": 184,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0708,
-      "model_calls": 0
-    },
-    {
-      "corpus": 185,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0697,
-      "model_calls": 0
-    },
-    {
-      "corpus": 186,
-      "planted": [
-        "liability_cap"
-      ],
-      "found": [
-        "liability_cap"
-      ],
-      "recalled": [
-        "liability_cap"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0703,
-      "model_calls": 0
-    },
-    {
-      "corpus": 187,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0671,
-      "model_calls": 0
-    },
-    {
-      "corpus": 188,
-      "planted": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "found": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "liability_cap",
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0696,
-      "model_calls": 0
-    },
-    {
-      "corpus": 189,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0685,
-      "model_calls": 0
-    },
-    {
-      "corpus": 190,
-      "planted": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "liability_cap",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.07,
-      "model_calls": 0
-    },
-    {
-      "corpus": 191,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.064,
-      "model_calls": 0
-    },
-    {
-      "corpus": 192,
-      "planted": [
-        "rate_day"
-      ],
-      "found": [
-        "rate_day"
-      ],
-      "recalled": [
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0706,
-      "model_calls": 0
-    },
-    {
-      "corpus": 193,
-      "planted": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0615,
-      "model_calls": 0
-    },
-    {
-      "corpus": 194,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0777,
-      "model_calls": 0
-    },
-    {
-      "corpus": 195,
-      "planted": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "found": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days",
-        "payment_terms_days",
-        "rate_day"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0675,
-      "model_calls": 0
-    },
-    {
-      "corpus": 196,
-      "planted": [],
-      "found": [],
-      "recalled": [],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0749,
-      "model_calls": 0
-    },
-    {
-      "corpus": 197,
-      "planted": [
-        "payment_terms_days"
-      ],
-      "found": [
-        "payment_terms_days"
-      ],
-      "recalled": [
-        "payment_terms_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0642,
-      "model_calls": 0
-    },
-    {
-      "corpus": 198,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0683,
-      "model_calls": 0
-    },
-    {
-      "corpus": 199,
-      "planted": [
-        "auto_renewal_notice_days"
-      ],
-      "found": [
-        "auto_renewal_notice_days"
-      ],
-      "recalled": [
-        "auto_renewal_notice_days"
-      ],
-      "missed": [],
-      "false_positives": [],
-      "rows_stated": 9,
-      "rows_cited": 9,
-      "seconds": 0.0696,
+      "seconds": 0.0588,
       "model_calls": 0
     }
   ]

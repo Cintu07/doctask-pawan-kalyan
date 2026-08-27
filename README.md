@@ -21,6 +21,61 @@ call. `analyst demo` runs the entire story end to end in about a second.
 
 ---
 
+## run against 510 real contracts
+
+The generated benchmark proves the logic against data whose answer I chose.
+This one asks the less comfortable question: what happens on contracts written
+by lawyers who had never heard of this system.
+
+`scripts/realworld.py --fetch` downloads **CUAD**, the Contract Understanding
+Atticus Dataset: 510 real commercial agreements filed with the SEC, annotated
+by attorneys, CC BY 4.0 from The Atticus Project. Licences, supply, distribution,
+hosting, agency. Median 33,000 characters, longest 338,000.
+
+| | |
+|---|---|
+| read without error | **509 of 509** |
+| citation validity | **100%**, 346 of 346 claims |
+| subject coverage per document | p50 **12.5%**, p95 25%, best 50% |
+| documents wrongly quarantined | **0** |
+| seconds per document | p50 0.066, p95 0.410, worst 1.022 |
+
+**Read that coverage number honestly: it is low, and it should be.** The
+extraction rules were written against one drafting style, and 510 contracts by
+other people do not share it. Governing law is found in 34% of them, a liability
+cap in 0.4%. The system does not pretend otherwise, and that is the point of the
+next line: **citation validity stayed at 100%.** On unfamiliar prose it extracts
+less and says "not stated" more. It does not start guessing.
+
+### what this run found
+
+The guard quarantined **130 of 509 real contracts** on the first pass. Every one
+was ordinary legal English:
+
+```
+"shall act as an Independent Escrow Agent"
+"will act as the importer of record"
+"act as a Selected Dealer"
+"if You are a corporation"
+```
+
+The patterns were `act\s+as` and `you\s+are\s+(now|an?)\s+`, which
+between them match a large share of every commercial contract ever written. A
+guard that quarantines a quarter of a real corpus is not a guard, it is an
+outage, and the register it produces is missing a quarter of its sources.
+
+Two survived the first fix and were also false: *"receipt of the system prompt
+for the failed transaction"* and *"any new instructions with respect to their
+payments"*. Those phrases are directives in an injection and nouns in a payments
+clause, and the colon is what tells them apart.
+
+**130 to 0, with no attack missed.** The offending sentences are now regression
+tests, quoted verbatim from the corpus.
+
+Nothing in the suite was failing before this run. It took real documents.
+
+---
+
 ## measured, not asserted
 
 `scripts/benchmark.py` generates corpora with contradictions planted at known

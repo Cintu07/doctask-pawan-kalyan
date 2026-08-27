@@ -6,6 +6,7 @@ __pycache__/
 *.egg-info/
 data/
 corpus/
+corpus/real-contracts/
 .env
 ui/node_modules/
 ui/dist/

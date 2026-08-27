@@ -25,13 +25,33 @@ import re
 
 from .models import SourceDocument
 
+# A role the text would only assign to a machine. Naming these explicitly is
+# what separates "you are now a helpful assistant" from "if You are a
+# corporation", which is a sentence that appears in real contracts.
+_MACHINE_ROLE = (
+    r"(an?\s+)?(ai|a\.i\.|artificial\s+intelligence|assistant|chat\s*bot|bot|"
+    r"language\s+model|llm|gpt|agent\s+that|system\s+that|helpful\s+\w+|"
+    r"compliance\s+assistant|contract\s+(review|analysis)\s+\w+)"
+)
+
 PATTERNS: tuple[tuple[str, str], ...] = (
     (r"ignore\s+(all\s+)?(previous|prior|above|the\s+above)", "override of prior instructions"),
     (r"disregard\s+(the\s+)?(above|previous|earlier)", "override of prior instructions"),
-    (r"you\s+are\s+(now|an?)\s+", "role reassignment"),
-    (r"\bsystem\s*prompt\b", "reference to the system prompt"),
-    (r"\bnew\s+instructions?\b", "injected instructions"),
-    (r"\bact\s+as\b", "role reassignment"),
+    # Both of the role patterns below used to be far looser, and 510 real
+    # contracts showed what that costs: "shall act as agent", "act as the
+    # importer of record", "act as a Selected Dealer" and "if You are a
+    # corporation" all tripped the guard. 130 of 509 documents were quarantined
+    # for writing ordinary English. A guard that fires on a quarter of real
+    # contracts is not a guard, it is an outage.
+    (rf"you\s+are\s+(now\s+)?{_MACHINE_ROLE}\b", "role reassignment"),
+    (rf"\b(you\s+(will|must|should|shall)\s+)?act\s+as\s+{_MACHINE_ROLE}\b", "role reassignment"),
+    # Both of these need to read as a directive rather than as a noun. Real
+    # contracts say "receipt of the system prompt for the failed transaction"
+    # and "any new instructions with respect to their payments", and an
+    # injection says "SYSTEM PROMPT:" or "New instructions:". The colon, or the
+    # start of a line, is what separates the two.
+    (r"(?:^|\n)\s*system\s*prompt\b|\bsystem\s*prompt\s*:", "reference to the system prompt"),
+    (r"(?:^|\n)\s*new\s+instructions?\b|\bnew\s+instructions?\s*:", "injected instructions"),
     (r"</?\s*(system|instructions?|script)\s*>", "instruction markup"),
     (r"\b(assistant|ai|model|llm)\s*[:,]\s*(please\s+)?(record|report|set|output|write)",
      "direct address to the extractor"),
