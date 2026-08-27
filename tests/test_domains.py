@@ -271,3 +271,73 @@ class TestBinaryFilesAreRefused:
         f.write_text("సర్వే నెం: 142/A గ్రామం: కొండాపూర్ మండలం: షామీర్‌పేట " * 12, encoding="utf-8")
         text, _ = read_text(f)
         assert "సర్వే" in text
+
+
+class TestHintsDoNotBleedBetweenSubjects:
+    """A shared word must not make one subject's sentence evidence for another.
+
+    Measured, not guessed: scripts/benchmark.py reported 27 false conflicts
+    across 40 generated corpora, all on notice_period_days. The offline
+    extractor's hint list for it included "notice", which also appears in
+    "Renewal notice is 60 days prior to the renewal date". The register then
+    reported a contradiction between a termination notice and a renewal notice
+    that were never in disagreement, because they were never about the same
+    thing.
+
+    After the fix: 0 false conflicts over the same 40 corpora, with conflict
+    recall unchanged at 100%.
+    """
+
+    def test_a_renewal_sentence_is_not_read_as_a_termination_notice(self, tmp_path):
+        from analyst.extract import subjects_for
+        from analyst.ingest import ingest_file
+        from analyst.llm import OfflineExtractor
+
+        f = tmp_path / "amendment.md"
+        f.write_text(
+            "# Amendment No. 1\n\n"
+            "1. Payment terms are net 30 days.\n"
+            "3. Renewal notice is 60 days prior to the renewal date.\n",
+            encoding="utf-8",
+        )
+        document = ingest_file(f)
+        subjects = subjects_for(document.kind)
+        claims, _ = OfflineExtractor().propose(document, subjects)
+
+        by_subject = {c.subject: c.value for c in claims}
+        assert "notice_period_days" not in by_subject, by_subject
+
+    def test_a_real_termination_sentence_is_still_read(self, tmp_path):
+        """The fix must not buy precision by refusing valid work."""
+        from analyst.extract import subjects_for
+        from analyst.ingest import ingest_file
+        from analyst.llm import OfflineExtractor
+
+        f = tmp_path / "msa.txt"
+        f.write_text(
+            "MASTER SERVICES AGREEMENT\n\n"
+            "4.1 Termination. Either party may terminate upon 90 days written notice.\n",
+            encoding="utf-8",
+        )
+        document = ingest_file(f)
+        claims, _ = OfflineExtractor().propose(document, subjects_for(document.kind))
+        assert any(c.subject == "notice_period_days" for c in claims)
+
+    def test_exclusive_hints_are_derived_from_the_pack(self):
+        """The rule is data driven, so a new domain gets it for free.
+
+        The mechanism is worth stating precisely, because my first version of
+        this test described it wrongly. "notice" is not the problem word: it
+        belongs to the termination subject alone. The renewal sentence is
+        rejected because it carries "renew", which belongs to a *different*
+        subject, and a sentence carrying another subject's distinguishing word
+        is evidence for that subject rather than this one.
+        """
+        from analyst.llm import OfflineExtractor
+
+        exclusive = OfflineExtractor._exclusive_hints()
+        assert exclusive["renew"] == {"auto_renewal_notice_days"}
+        assert exclusive["terminat"] == {"notice_period_days"}
+        # "total" is claimed by two subjects, so it settles nothing and is
+        # deliberately absent from the exclusive set.
+        assert "total" not in exclusive

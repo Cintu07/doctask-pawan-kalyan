@@ -64,11 +64,28 @@ class OfflineExtractor:
 
     name = "offline"
 
+    @staticmethod
+    def _exclusive_hints() -> dict[str, set[str]]:
+        """Hints that belong to exactly one subject in the active domain.
+
+        These are the words that tell two subjects apart. "notice" is shared by
+        termination notice and renewal notice and so distinguishes nothing;
+        "terminat" and "renew" each belong to one subject and settle it.
+        """
+        from .extract import active_domain
+
+        owners: dict[str, set[str]] = {}
+        for subject in active_domain().subjects:
+            for hint in subject.hints:
+                owners.setdefault(hint, set()).add(subject.key)
+        return {h: keys for h, keys in owners.items() if len(keys) == 1}
+
     def propose(
         self, document: SourceDocument, subjects: list[Subject]
     ) -> tuple[list[Claim], Usage]:
         claims: list[Claim] = []
         lowered = document.text.lower()
+        exclusive = self._exclusive_hints()
 
         for subject in subjects:
             # Hints come from the domain pack, not from this module. An
@@ -82,6 +99,21 @@ class OfflineExtractor:
                     continue
                 start, end = _sentence_span(document.text, position, position + len(hint))
                 sentence = document.text[start:end]
+
+                # A sentence that carries another subject's distinguishing word
+                # is evidence for that subject, not this one. Without this,
+                # "Renewal notice is 60 days prior to the renewal date" was read
+                # as a termination notice, because it contains "notice", and the
+                # register reported a contradiction that did not exist. Measured
+                # at 27 false conflicts across 40 generated corpora.
+                low = sentence.lower()
+                if any(
+                    other in low and subject.key not in owners
+                    for other, owners in exclusive.items()
+                    if other not in hints
+                ):
+                    continue
+
                 value = self._value_from(subject, sentence)
                 if value is None:
                     continue

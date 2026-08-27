@@ -10,13 +10,47 @@ built by pawan for the superdocs round 2 task.
 ```
 git clone <this repo> && cd doctask-pawan-kalyan
 python -m venv .venv && .venv/bin/pip install -e ".[dev]"
-analyst demo          # the whole story, offline, in one second
-python scripts/abuse.py   # nine ways to break it, on purpose
+analyst demo              # the whole story, offline, in one second
+python scripts/abuse.py       # nine ways to break it, on purpose
+python scripts/benchmark.py   # measure the claims instead of repeating them
 analyst serve         # then open http://127.0.0.1:8000/ui
 ```
 
 that is the whole setup. no docker, no database server, no api key, no paid
 call. `analyst demo` runs the entire story end to end in about a second.
+
+---
+
+## measured, not asserted
+
+`scripts/benchmark.py` generates corpora with contradictions planted at known
+positions, so the right answer exists before the system sees the documents.
+Method is in the module docstring, raw per corpus results are committed to
+`benchmarks/results.json`.
+
+Over **200 generated corpora**:
+
+| | |
+|---|---|
+| conflict recall | **100%** (402 of 402 planted) |
+| false conflicts | **0** across 200 corpora |
+| citation validity | **100%** (1,800 of 1,800 stated rows) |
+| seconds per corpus | p50 0.070, p95 0.078, worst 0.871 |
+| model calls | 0 |
+
+Reported at p50, p95 and worst rather than as a mean, because the mean of a
+distribution with a bad tail is a way of hiding the tail.
+
+**The first run of this benchmark reported 27 false conflicts**, all on
+`notice_period_days`. The offline extractor's hint list included the word
+"notice", which also matches *"Renewal notice is 60 days prior to the renewal
+date"*, so a renewal notice and a termination notice were reported as
+contradicting each other when they were never about the same thing. A sentence
+carrying another subject's distinguishing word is now treated as evidence for
+that subject rather than this one. 27 to 0, with recall unchanged.
+
+That number existed only because the benchmark existed. Nothing in the test
+suite was failing.
 
 ---
 
