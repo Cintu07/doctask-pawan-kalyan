@@ -38,7 +38,7 @@ class Rule:
     stage: int = 1  # rules are evaluated in stages, cheap and structural first
 
     @classmethod
-    def from_dict(cls, raw: dict[str, Any]) -> "Rule":
+    def from_dict(cls, raw: dict[str, Any]) -> Rule:
         missing = {"id", "subject", "comparator", "message"} - set(raw)
         if missing:
             raise PlaybookError(f"rule is missing {', '.join(sorted(missing))}: {raw!r}")

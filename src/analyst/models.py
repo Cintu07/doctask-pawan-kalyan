@@ -23,7 +23,7 @@ DocumentKind = Literal["msa", "amendment", "sow", "invoice", "policy", "unknown"
 Severity = Literal["critical", "high", "medium", "low", "info"]
 
 
-class Decision(str, Enum):
+class Decision(str, Enum):  # noqa: UP042 - str mixin keeps json round trips stable
     """A human's answer. Nothing commits without one."""
 
     PENDING = "pending"

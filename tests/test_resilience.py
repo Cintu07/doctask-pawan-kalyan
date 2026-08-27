@@ -12,10 +12,8 @@ import threading
 
 import pytest
 
-from analyst.conflicts import detect_conflicts
-from analyst.extract import extract_with_rules
 from analyst.graph import Pipeline
-from analyst.ingest import ingest_directory, ingest_file
+from analyst.ingest import ingest_directory
 from analyst.sanitize import scan_documents, scan_text
 from analyst.service import Analyst, LeaseHeld
 from analyst.store import Store
@@ -115,16 +113,15 @@ class TestTwoRunsAtOnce:
 
     def test_the_same_run_id_cannot_be_advanced_twice(self, corpus, tmp_path):
         store = Store(tmp_path / "a.db")
-        with store.lease("run-x", "worker-1"):
-            with pytest.raises(LeaseHeld, match="already being processed"):
-                with store.lease("run-x", "worker-2"):
-                    pass
+        with store.lease("run-x", "worker-1"), pytest.raises(
+            LeaseHeld, match="already being processed"
+        ), store.lease("run-x", "worker-2"):
+            pass
 
     def test_a_lease_is_released_even_when_the_run_fails(self, tmp_path):
         store = Store(tmp_path / "a.db")
-        with pytest.raises(ValueError):
-            with store.lease("run-y", "worker-1"):
-                raise ValueError("boom")
+        with pytest.raises(ValueError), store.lease("run-y", "worker-1"):
+            raise ValueError("boom")
         # The next worker gets it, rather than waiting for expiry.
         with store.lease("run-y", "worker-2"):
             pass

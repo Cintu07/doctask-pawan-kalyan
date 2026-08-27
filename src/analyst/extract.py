@@ -25,7 +25,7 @@ from __future__ import annotations
 import logging
 import re
 import uuid
-from typing import Iterable
+from collections.abc import Iterable
 
 from .domain import Domain, ExtractionRule, Subject, caster, load_domain, set_active
 from .ingest import locator_for
@@ -114,7 +114,7 @@ def apply_rule(rule: ExtractionRule, document: SourceDocument) -> list[Claim]:
     cast = caster(rule.cast)
     for pattern in rule.patterns:
         try:
-            compiled = re.compile(pattern, re.I)
+            compiled = re.compile(pattern, re.IGNORECASE)
         except re.error as exc:  # pragma: no cover - load_domain already checked
             log.error("bad pattern for %s: %s", rule.subject, exc)
             continue

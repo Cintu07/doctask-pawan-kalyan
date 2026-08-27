@@ -11,9 +11,9 @@ from __future__ import annotations
 
 import pytest
 
-from analyst.conflicts import carry_forward_decisions, detect_conflicts
+from analyst.conflicts import carry_forward_decisions
 from analyst.extract import extract_with_rules, verify_claims
-from analyst.ingest import classify, ingest_directory, ingest_file
+from analyst.ingest import classify, ingest_directory
 from analyst.models import Claim, Conflict, Decision, Provenance
 from analyst.playbook import PlaybookError, Rule, evaluate, load_playbook
 from analyst.register import build_rows, diff_rows, verify_untouched

@@ -21,10 +21,10 @@ import traceback
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from analyst.domain import DomainError, load_domain  # noqa: E402
-from analyst.ingest import ingest_directory  # noqa: E402
-from analyst.playbook import PlaybookError, load_playbook  # noqa: E402
-from analyst.service import Analyst, LeaseHeld  # noqa: E402
+from analyst.domain import DomainError, load_domain
+from analyst.ingest import ingest_directory
+from analyst.playbook import PlaybookError, load_playbook
+from analyst.service import Analyst, LeaseHeld
 
 PASS, FAIL = "  ok  ", " FAIL "
 results: list[tuple[bool, str]] = []

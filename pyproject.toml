@@ -37,5 +37,16 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.ruff]
-line-length = 100
+line-length = 110
 target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+# The abuse script catches bare Exception deliberately. The question it asks is
+# "did this crash", so narrowing the catch would defeat the test it is running.
+"scripts/abuse.py" = ["BLE001", "E402"]
+# Both scripts put src on sys.path before importing the package, so their
+# imports cannot be at the top of the file.
+"scripts/demo.py" = ["E402"]

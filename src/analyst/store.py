@@ -16,10 +16,11 @@ import json
 import pathlib
 import sqlite3
 import time
+from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import asdict
 from datetime import UTC, datetime
-from typing import Any, Iterator
+from typing import Any
 
 from .models import (
     Claim,
@@ -172,8 +173,9 @@ class Store:
                 current = conn.execute(
                     "SELECT holder FROM leases WHERE run_id=?", (run_id,)
                 ).fetchone()
+                holder = current[0] if current else "another worker"
                 raise LeaseHeld(
-                    f"run {run_id} is already being processed by {current[0] if current else 'another worker'}. "
+                    f"run {run_id} is already being processed by {holder}. "
                     f"Wait for it to finish, or the lease expires in {seconds:.0f}s."
                 ) from exc
         try:

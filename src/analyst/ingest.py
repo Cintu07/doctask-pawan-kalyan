@@ -99,7 +99,7 @@ def read_text(path: pathlib.Path) -> tuple[str, int]:
     if suffix in (".html", ".htm"):
         raw = path.read_text(encoding="utf-8", errors="replace")
         _reject_if_binary(path, raw)
-        text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", raw, flags=re.S | re.I)
+        text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", raw, flags=re.DOTALL | re.IGNORECASE)
         text = re.sub(r"<[^>]+>", " ", text)
         return re.sub(r"[ \t]{2,}", " ", text), 1
 
@@ -143,7 +143,7 @@ def classify(text: str, filename: str = "", kinds=None) -> tuple[DocumentKind, s
 
     for rule in (kinds if kinds is not None else _kind_rules()):
         for pattern in rule.patterns:
-            match = re.search(pattern, haystack, re.I)
+            match = re.search(pattern, haystack, re.IGNORECASE)
             if match:
                 score = rule.weight
                 # A hit in the filename or the first 200 characters is stronger

@@ -118,13 +118,13 @@ class OfflineExtractor:
         those, or the register says "not stated".
         """
         if subject.unit == "days":
-            match = re.search(r"\b(\d{1,4})\s*(?:\(\d+\)\s*)?days?\b", sentence, re.I)
+            match = re.search(r"\b(\d{1,4})\s*(?:\(\d+\)\s*)?days?\b", sentence, re.IGNORECASE)
             return _int_from(match.group(1)) if match else None
         if subject.unit == "currency":
             match = re.search(r"(?:[$£€]|Rs\.?|₹)\s*([\d,]+(?:\.\d+)?)", sentence)
             return cast_money(match.group(1)) if match else None
         if subject.unit == "acres":
-            match = re.search(r"\b(\d+(?:\.\d+)?)\s*(?:ac(?:re)?s?)\b", sentence, re.I)
+            match = re.search(r"\b(\d+(?:\.\d+)?)\s*(?:ac(?:re)?s?)\b", sentence, re.IGNORECASE)
             return match.group(1) if match else None
         return None
 

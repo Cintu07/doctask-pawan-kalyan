@@ -38,7 +38,7 @@ PATTERNS: tuple[tuple[str, str], ...] = (
     (r"do\s+not\s+(report|flag|mention|record)", "instruction to suppress a finding"),
 )
 
-_COMPILED = [(re.compile(p, re.I), why) for p, why in PATTERNS]
+_COMPILED = [(re.compile(p, re.IGNORECASE), why) for p, why in PATTERNS]
 
 CONTEXT_CHARS = 100
 

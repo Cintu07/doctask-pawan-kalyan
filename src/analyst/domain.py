@@ -19,9 +19,10 @@ from __future__ import annotations
 import json
 import pathlib
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
-from typing import Any, Callable, Literal
+from typing import Any, Literal
 
 CastName = Literal["int", "money", "text", "date"]
 
@@ -194,7 +195,7 @@ def load_domain(name_or_path: str | pathlib.Path = DEFAULT_DOMAIN) -> Domain:
             raise DomainError(f"rule {item['subject']}: unknown cast {cast!r}")
         for pattern in item["patterns"]:
             try:
-                compiled = re.compile(pattern, re.I)
+                compiled = re.compile(pattern, re.IGNORECASE)
             except re.error as exc:
                 raise DomainError(f"rule {item['subject']}: bad pattern {pattern!r}: {exc}") from exc
             if "v" not in compiled.groupindex:

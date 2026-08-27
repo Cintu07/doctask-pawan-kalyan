@@ -33,7 +33,7 @@ from .store import LeaseHeld, Store
 
 log = logging.getLogger(__name__)
 
-__all__ = ["Analyst", "Proposal", "LeaseHeld"]
+__all__ = ["Analyst", "LeaseHeld", "Proposal"]
 
 
 @dataclass(slots=True)

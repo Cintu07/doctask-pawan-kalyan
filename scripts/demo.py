@@ -21,8 +21,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from analyst.register import register_digest  # noqa: E402
-from analyst.service import Analyst  # noqa: E402
+from analyst.register import register_digest
+from analyst.service import Analyst
 
 CORPUS = ROOT / "corpus" / "northwind"
 PLAYBOOK = ROOT / "playbooks" / "vendor-contract.json"

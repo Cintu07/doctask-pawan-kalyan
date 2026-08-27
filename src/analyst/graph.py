@@ -19,8 +19,9 @@ import logging
 import pathlib
 import time
 import uuid
+from collections.abc import Iterator
 from contextlib import contextmanager
-from typing import Annotated, Any, Iterator, TypedDict
+from typing import Annotated, Any, TypedDict
 
 from .conflicts import carry_forward_decisions, detect_conflicts
 from .extract import extract_with_rules, missing_subjects, subjects_for, verify_claims

@@ -73,7 +73,8 @@ def _safe_source(raw: str) -> pathlib.Path:
     The corpus path arrives over HTTP, so without this an attacker could walk
     the filesystem by asking the analyst to read it.
     """
-    candidate = (CORPUS_ROOT / raw).resolve() if not pathlib.Path(raw).is_absolute() else pathlib.Path(raw).resolve()
+    asked = pathlib.Path(raw)
+    candidate = asked.resolve() if asked.is_absolute() else (CORPUS_ROOT / raw).resolve()
     if not str(candidate).startswith(str(CORPUS_ROOT)):
         raise HTTPException(
             status_code=400,
