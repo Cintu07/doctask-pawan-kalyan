@@ -7,6 +7,13 @@ documents arrive.
 
 built by pawan for the superdocs round 2 task.
 
+**the round 2 write-ups live here too:**
+[task4-one-page.md](task4-one-page.md) (the task 4 write-up),
+[task4-architecture.pdf](task4-architecture.pdf) (the architecture diagram, also as
+[png](task4-architecture.png) and [excalidraw](task4-architecture.excalidraw)),
+[task3-use-cases.md](task3-use-cases.md), and
+[extra-credit-land-titles.md](extra-credit-land-titles.md).
+
 ```
 git clone <this repo> && cd doctask-pawan-kalyan
 python -m venv .venv && .venv/bin/pip install -e ".[dev]"
